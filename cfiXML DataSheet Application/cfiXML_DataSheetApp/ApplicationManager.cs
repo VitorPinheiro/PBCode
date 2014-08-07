@@ -10,11 +10,7 @@ namespace cfiXML_DataSheetApp
 {
     public class ApplicationManager
     {
-        private string _worksheetPath;
-
         private cfiXML_Manager _cfiXML_Manager;
-
-        private XLS_Model _xlsModelToUse;
 
         private IMap_XLS_To_cfiXML _mapAPI610_to_cfiXML;
 
