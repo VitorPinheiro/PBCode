@@ -69,6 +69,7 @@ namespace cfiXML_API
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 _xml = null;
                 // O xml está vazio, sem um nó raiz ou ele não existe.
             }
