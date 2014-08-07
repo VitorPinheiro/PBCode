@@ -1,4 +1,0 @@
-\\petrobras\petrobras\ENG-AB\ENG-AB_PROJEN_APR\RESERVADA\EQUIPE\JOAO_PAULO-E9JR\cfi\cfiXML_API610_Classes\Model\bin\Debug\Model.dll
-\\petrobras\petrobras\ENG-AB\ENG-AB_PROJEN_APR\RESERVADA\EQUIPE\JOAO_PAULO-E9JR\cfi\cfiXML_API610_Classes\Model\bin\Debug\Model.pdb
-\\petrobras\petrobras\ENG-AB\ENG-AB_PROJEN_APR\RESERVADA\EQUIPE\JOAO_PAULO-E9JR\cfi\cfiXML_API610_Classes\Model\obj\Debug\Model.dll
-\\petrobras\petrobras\ENG-AB\ENG-AB_PROJEN_APR\RESERVADA\EQUIPE\JOAO_PAULO-E9JR\cfi\cfiXML_API610_Classes\Model\obj\Debug\Model.pdb
