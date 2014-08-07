@@ -34,3 +34,12 @@ C:\Users\e6z5\Desktop\cfiXML DataSheet Application\cfiXML_Map_Reader\obj\Debug\c
 C:\Users\e6z5\Desktop\cfiXML DataSheet Application\cfiXML_Map_Reader\obj\Debug\cfiXML_Map_Reader.csproj.GenerateResource.Cache
 C:\Users\e6z5\Desktop\cfiXML DataSheet Application\cfiXML_Map_Reader\obj\Debug\cfiXML_Map_Reader.dll
 C:\Users\e6z5\Desktop\cfiXML DataSheet Application\cfiXML_Map_Reader\obj\Debug\cfiXML_Map_Reader.pdb
+C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_Map_Reader\bin\Debug\cfiXML_Map_Reader.dll
+C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_Map_Reader\bin\Debug\cfiXML_Map_Reader.pdb
+C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_Map_Reader\bin\Debug\Model.dll
+C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_Map_Reader\bin\Debug\Model.pdb
+C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_Map_Reader\obj\Debug\cfiXML_Map_Reader.csprojResolveAssemblyReference.cache
+C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_Map_Reader\obj\Debug\cfiXML_Map_Reader.Properties.Resources.resources
+C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_Map_Reader\obj\Debug\cfiXML_Map_Reader.csproj.GenerateResource.Cache
+C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_Map_Reader\obj\Debug\cfiXML_Map_Reader.dll
+C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_Map_Reader\obj\Debug\cfiXML_Map_Reader.pdb

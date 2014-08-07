@@ -68,8 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cfiXML_Enums.cs" />
+    <Compile Include="cfiXML_Handler_Methods.cs" />
     <Compile Include="Messages.cs" />
-    <Compile Include="MethodsMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="cfiXML_Handler.cs" />
     <Compile Include="Utils.cs" />

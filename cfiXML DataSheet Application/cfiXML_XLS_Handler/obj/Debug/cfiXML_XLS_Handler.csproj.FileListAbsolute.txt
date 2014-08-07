@@ -30,3 +30,11 @@ C:\Users\e6z5\Desktop\cfiXML DataSheet Application\cfiXML_XLS_Handler\obj\Debug\
 C:\Users\e6z5\Desktop\cfiXML DataSheet Application\cfiXML_XLS_Handler\obj\Debug\cfiXML_XLS_Handler.csproj.ResolveComReference.cache
 C:\Users\e6z5\Desktop\cfiXML DataSheet Application\cfiXML_XLS_Handler\obj\Debug\cfiXML_XLS_Handler.dll
 C:\Users\e6z5\Desktop\cfiXML DataSheet Application\cfiXML_XLS_Handler\obj\Debug\cfiXML_XLS_Handler.pdb
+C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_XLS_Handler\bin\Debug\cfiXML_XLS_Handler.dll
+C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_XLS_Handler\bin\Debug\cfiXML_XLS_Handler.pdb
+C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_XLS_Handler\bin\Debug\Model.dll
+C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_XLS_Handler\bin\Debug\Model.pdb
+C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_XLS_Handler\obj\Debug\cfiXML_XLS_Handler.csprojResolveAssemblyReference.cache
+C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_XLS_Handler\obj\Debug\cfiXML_XLS_Handler.csproj.ResolveComReference.cache
+C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_XLS_Handler\obj\Debug\cfiXML_XLS_Handler.dll
+C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_XLS_Handler\obj\Debug\cfiXML_XLS_Handler.pdb
