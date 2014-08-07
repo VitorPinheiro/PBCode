@@ -83,9 +83,6 @@ namespace cfiXML_ExeForExcel
                     }
                 }
             }
-
-
-
             
 
             return 0;
