@@ -1,0 +1,8 @@
+\\petrobras\petrobras\ENG-AB\ENG-AB_PROJEN_APR\RESERVADA\EQUIPE\JOAO_PAULO-E9JR\cfi\cfiXML_API610_Classes\cfiRevisions\bin\Debug\cfiRevisions.dll
+\\petrobras\petrobras\ENG-AB\ENG-AB_PROJEN_APR\RESERVADA\EQUIPE\JOAO_PAULO-E9JR\cfi\cfiXML_API610_Classes\cfiRevisions\bin\Debug\cfiRevisions.pdb
+\\petrobras\petrobras\ENG-AB\ENG-AB_PROJEN_APR\RESERVADA\EQUIPE\JOAO_PAULO-E9JR\cfi\cfiXML_API610_Classes\cfiRevisions\obj\Debug\cfiRevisions.dll
+\\petrobras\petrobras\ENG-AB\ENG-AB_PROJEN_APR\RESERVADA\EQUIPE\JOAO_PAULO-E9JR\cfi\cfiXML_API610_Classes\cfiRevisions\obj\Debug\cfiRevisions.pdb
+C:\Users\e9vp\Desktop\cfiXML_API610_Classes\cfiRevisions\bin\Debug\cfiRevisions.dll
+C:\Users\e9vp\Desktop\cfiXML_API610_Classes\cfiRevisions\bin\Debug\cfiRevisions.pdb
+C:\Users\e9vp\Desktop\cfiXML_API610_Classes\cfiRevisions\obj\Debug\cfiRevisions.dll
+C:\Users\e9vp\Desktop\cfiXML_API610_Classes\cfiRevisions\obj\Debug\cfiRevisions.pdb

@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<centrifugalPumpDataSheet xsi:schemaLocation="http://www.cfixml.org/document/eqRotDoc ..\schema\document\eqRotDoc.xsd" revision="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.cfixml.org/document/eqRotDoc">
+	<transaction xmlns="http://www.cfixml.org/obj">
+		<order>1</order>
+		<transactionType>Modified</transactionType>
+		<revision>1</revision>
+		<dateTime>2014-06-01T00:00:00</dateTime>
+		<person xmlns="http://www.cfixml.org/ctx">
+			<shortID>e6z5</shortID>
+		</person>
+		<remark>ISSUED FOR PURCHASE</remark>
+	</transaction>
+	<transaction xmlns="http://www.cfixml.org/obj">
+		<order>2</order>
+		<transactionType>Checked</transactionType>
+		<revision>1</revision>
+		<dateTime>2014-06-01T00:00:00</dateTime>
+		<person xmlns="http://www.cfixml.org/ctx">
+			<shortID>e9vp</shortID>
+		</person>
+	</transaction>
+	<transaction xmlns="http://www.cfixml.org/obj">
+		<order>3</order>
+		<transactionType>Approved</transactionType>
+		<revision>1</revision>
+		<dateTime>2014-06-01T00:00:00</dateTime>
+		<person xmlns="http://www.cfixml.org/ctx">
+			<shortID>dml2</shortID>
+		</person>
+	</transaction>
+	<dataSheetHeader xmlns="http://www.cfixml.org/dx">
+		<project xmlns="http://www.cfixml.org/proj">
+			<organizationContext xmlns="http://www.cfixml.org/ctx">
+				<organizationRole>Owner</organizationRole>
+				<organization>
+					<name xmlns="http://www.cfixml.org/objb">Nome Cliente</name>
+				</organization>
+			</organizationContext>
+			<name xmlns="http://www.cfixml.org/objb">Titulo Projeto</name>
+			<id>8289647-9011</id>
+		</project>
+		<alternativeDocumentID>
+			<documentType>Requisition</documentType>
+			<id>requisitionID</id>
+		</alternativeDocumentID>
+		<alternativeDocumentID>
+			<documentType>Purchase Order (P/O)</documentType>
+			<id>PurchOrderNumber</id>
+		</alternativeDocumentID>
+		<documentID>
+			<id>pumpID</id>
+		</documentID>
+		<associatedDataSheet>
+			<documentEquipmentType>Driver</documentEquipmentType>
+			<id>motorID</id>
+		</associatedDataSheet>
+		<associatedDataSheet>
+			<documentEquipmentType>Gears</documentEquipmentType>
+			<id>gearID</id>
+		</associatedDataSheet>
+		<associatedDataSheet>
+			<documentEquipmentType>Turbine</documentEquipmentType>
+			<id>turbineID</id>
+		</associatedDataSheet>
+	</dataSheetHeader>
+	<centrifugalPump xmlns="http://www.cfixml.org/eqRot">
+		<id xmlns="http://www.cfixml.org/eq">
+			<tag taggedItem="Assembly">SIP-001A/B/C/D</tag>
+			<serialNumber>123456789</serialNumber>
+			<specID>SpecID</specID>
+		</id>
+		<serviceCategory xmlns="http://www.cfixml.org/etl">
+			<serviceDescription>SAFETY INJECTION - BORATED WATER</serviceDescription>
+		</serviceCategory>
+		<streamConnection usageContext="Operating performance">
+			<normalFlowDirection xmlns="http://www.cfixml.org/etl">Inlet</normalFlowDirection>
+			<materialStream xmlns="http://www.cfixml.org/uo">
+				<materialFlow>
+					<flowPropertyType xmlns="http://www.cfixml.org/etl">Maximum</flowPropertyType>
+					<actualVolumetricFlow referencePropertyID="Flowrate, Maximum">11</actualVolumetricFlow>
+				</materialFlow>
+				<materialFlow>
+					<flowPropertyType xmlns="http://www.cfixml.org/etl">Rated</flowPropertyType>
+					<valueSourceType xmlns="http://www.cfixml.org/etl">Required</valueSourceType>
+					<actualVolumetricFlow referencePropertyID="Flowrate, Rated">12</actualVolumetricFlow>
+				</materialFlow>
+				<materialFlow>
+					<flowPropertyType xmlns="http://www.cfixml.org/etl">Normal</flowPropertyType>
+					<actualVolumetricFlow referencePropertyID="Flowrate, Normal">13</actualVolumetricFlow>
+				</materialFlow>
+				<materialFlow>
+					<flowPropertyType xmlns="http://www.cfixml.org/etl">Minimum</flowPropertyType>
+					<actualVolumetricFlow referencePropertyID="Flowrate, Minimum">14</actualVolumetricFlow>
+				</materialFlow>
+				<materialProperty xmlns="http://www.cfixml.org/mtrl">
+					<property>
+						<context>
+							<propertyType xmlns="http://www.cfixml.org/etl">Maximum</propertyType>
+						</context>
+						<p basis="absolute">5</p>
+					</property>
+					<property>
+						<context>
+							<propertyType xmlns="http://www.cfixml.org/etl">Normal</propertyType>
+						</context>
+						<p basis="absolute">6</p>
+					</property>
+					<property>
+						<context>
+							<propertyType xmlns="http://www.cfixml.org/etl">Minimum</propertyType>
+						</context>
+						<p basis="absolute">7</p>
+					</property>
+				</materialProperty>
+			</materialStream>
+		</streamConnection>
+		<streamConnection usageContext="Operating performance">
+			<normalFlowDirection xmlns="http://www.cfixml.org/etl">Outlet</normalFlowDirection>
+			<materialStream xmlns="http://www.cfixml.org/uo">
+				<materialProperty xmlns="http://www.cfixml.org/mtrl">
+					<property>
+						<context>
+							<propertyType xmlns="http://www.cfixml.org/etl">Maximum</propertyType>
+						</context>
+						<p>8</p>
+					</property>
+					<property>
+						<context>
+							<propertyType xmlns="http://www.cfixml.org/etl">Normal</propertyType>
+						</context>
+						<p>9</p>
+					</property>
+					<property>
+						<context>
+							<propertyType xmlns="http://www.cfixml.org/etl">Minimum</propertyType>
+						</context>
+						<p>10</p>
+					</property>
+				</materialProperty>
+			</materialStream>
+		</streamConnection>
+		<pressureDifference propertyType="Maximum" usageContext="Operating performance">1</pressureDifference>
+		<pressureDifference propertyType="Rated" usageContext="Operating performance">2</pressureDifference>
+		<pressureDifference propertyType="Normal" usageContext="Operating performance">3</pressureDifference>
+		<pressureDifference propertyType="Minimum" usageContext="Operating performance">4</pressureDifference>
+	</centrifugalPump>
+	<remark xmlns="http://www.cfixml.org/obj">Comentarios</remark>
+</centrifugalPumpDataSheet>

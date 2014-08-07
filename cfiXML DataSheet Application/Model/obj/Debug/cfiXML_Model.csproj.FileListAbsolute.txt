@@ -1,0 +1,16 @@
+\\petrobras\petrobras\ENG-AB\ENG-AB_PROJEN_APR\RESERVADA\EQUIPE\JOAO_PAULO-E9JR\cfi\cfiXML_API610_Classes\Model\bin\Debug\Model.dll
+\\petrobras\petrobras\ENG-AB\ENG-AB_PROJEN_APR\RESERVADA\EQUIPE\JOAO_PAULO-E9JR\cfi\cfiXML_API610_Classes\Model\bin\Debug\Model.pdb
+\\petrobras\petrobras\ENG-AB\ENG-AB_PROJEN_APR\RESERVADA\EQUIPE\JOAO_PAULO-E9JR\cfi\cfiXML_API610_Classes\Model\obj\Debug\Model.dll
+\\petrobras\petrobras\ENG-AB\ENG-AB_PROJEN_APR\RESERVADA\EQUIPE\JOAO_PAULO-E9JR\cfi\cfiXML_API610_Classes\Model\obj\Debug\Model.pdb
+C:\Users\e9vp\Desktop\cfiXML_API610_Classes\Model\bin\Debug\Model.dll
+C:\Users\e9vp\Desktop\cfiXML_API610_Classes\Model\bin\Debug\Model.pdb
+C:\Users\e9vp\Desktop\cfiXML_API610_Classes\Model\obj\Debug\Model.dll
+C:\Users\e9vp\Desktop\cfiXML_API610_Classes\Model\obj\Debug\Model.pdb
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheet Application\Model\bin\Debug\Model.dll
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheet Application\Model\bin\Debug\Model.pdb
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheet Application\Model\obj\Debug\Model.dll
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheet Application\Model\obj\Debug\Model.pdb
+C:\Users\e6z5\Desktop\cfiXML DataSheet Application\Model\bin\Debug\Model.dll
+C:\Users\e6z5\Desktop\cfiXML DataSheet Application\Model\bin\Debug\Model.pdb
+C:\Users\e6z5\Desktop\cfiXML DataSheet Application\Model\obj\Debug\Model.dll
+C:\Users\e6z5\Desktop\cfiXML DataSheet Application\Model\obj\Debug\Model.pdb

@@ -1,0 +1,4 @@
+\\petrobras\petrobras\ENG-AB\ENG-AB_PROJEN_APR\RESERVADA\EQUIPE\JOAO_PAULO-E9JR\cfi\cfiXML_API610_Classes\cfXML_Classes_Test\bin\Debug\cfXML_Classes_Test.exe
+\\petrobras\petrobras\ENG-AB\ENG-AB_PROJEN_APR\RESERVADA\EQUIPE\JOAO_PAULO-E9JR\cfi\cfiXML_API610_Classes\cfXML_Classes_Test\bin\Debug\cfXML_Classes_Test.pdb
+\\petrobras\petrobras\ENG-AB\ENG-AB_PROJEN_APR\RESERVADA\EQUIPE\JOAO_PAULO-E9JR\cfi\cfiXML_API610_Classes\cfXML_Classes_Test\obj\x86\Debug\cfXML_Classes_Test.exe
+\\petrobras\petrobras\ENG-AB\ENG-AB_PROJEN_APR\RESERVADA\EQUIPE\JOAO_PAULO-E9JR\cfi\cfiXML_API610_Classes\cfXML_Classes_Test\obj\x86\Debug\cfXML_Classes_Test.pdb

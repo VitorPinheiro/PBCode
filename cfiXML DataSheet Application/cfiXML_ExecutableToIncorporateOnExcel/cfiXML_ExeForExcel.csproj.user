@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <StartAction>Project</StartAction>
+    <StartArguments>"cfiXML_TO_XLS" "C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheet Application\ArquivosExemplo\API_610_11th_Datasheets_Vitor.xlsm" "C:\Users\e9vp\Desktop\cfiXML App\API_610_11th_Datasheets_Vitor.xml"</StartArguments>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PublishUrlHistory>C:\Users\e9vp\Desktop\TestDeploy\</PublishUrlHistory>
+    <InstallUrlHistory />
+    <SupportUrlHistory />
+    <UpdateUrlHistory />
+    <BootstrapperUrlHistory />
+    <ErrorReportUrlHistory />
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+</Project>

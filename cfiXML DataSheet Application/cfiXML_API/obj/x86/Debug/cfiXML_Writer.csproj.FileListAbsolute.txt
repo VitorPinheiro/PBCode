@@ -1,0 +1,33 @@
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\XML Spy CFI Project v4 LT\Generated Classes\cfiXML_Writer\obj\x86\Debug\cfiXML_Writer.csprojResolveAssemblyReference.cache
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\XML Spy CFI Project v4 LT\Generated Classes\cfiXML_Writer\bin\Debug\cfiXML_Writer.exe
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\XML Spy CFI Project v4 LT\Generated Classes\cfiXML_Writer\bin\Debug\cfiXML_Writer.pdb
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\XML Spy CFI Project v4 LT\Generated Classes\cfiXML_Writer\bin\Debug\Altova.dll
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\XML Spy CFI Project v4 LT\Generated Classes\cfiXML_Writer\bin\Debug\AltovaXML.dll
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\XML Spy CFI Project v4 LT\Generated Classes\cfiXML_Writer\bin\Debug\eqRotDoc.dll
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\XML Spy CFI Project v4 LT\Generated Classes\cfiXML_Writer\bin\Debug\AltovaXML.pdb
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\XML Spy CFI Project v4 LT\Generated Classes\cfiXML_Writer\bin\Debug\Altova.pdb
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\XML Spy CFI Project v4 LT\Generated Classes\cfiXML_Writer\bin\Debug\eqRotDoc.pdb
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\XML Spy CFI Project v4 LT\Generated Classes\cfiXML_Writer\obj\x86\Debug\cfiXML_Writer.exe
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\XML Spy CFI Project v4 LT\Generated Classes\cfiXML_Writer\obj\x86\Debug\cfiXML_Writer.pdb
+C:\Users\e9vp\.Nimi Places\Containers\ToDos\AEX xml schema\Schema\cfiXmlFull_WorkingReleaseV4.01\GeneratedCode\cfiXML_Writer\obj\x86\Debug\cfiXML_Writer.exe
+C:\Users\e9vp\.Nimi Places\Containers\ToDos\AEX xml schema\Schema\cfiXmlFull_WorkingReleaseV4.01\GeneratedCode\cfiXML_Writer\obj\x86\Debug\cfiXML_Writer.pdb
+C:\Users\e9vp\.Nimi Places\Containers\ToDos\AEX xml schema\Schema\cfiXmlFull_WorkingReleaseV4.01\GeneratedCode\cfiXML_Writer\bin\Debug\cfiXML_Writer.exe
+C:\Users\e9vp\.Nimi Places\Containers\ToDos\AEX xml schema\Schema\cfiXmlFull_WorkingReleaseV4.01\GeneratedCode\cfiXML_Writer\bin\Debug\cfiXML_Writer.pdb
+C:\Users\e9vp\.Nimi Places\Containers\ToDos\AEX xml schema\Schema\cfiXmlFull_WorkingReleaseV4.01\GeneratedCode\cfiXML_Writer\bin\Debug\Altova.dll
+C:\Users\e9vp\.Nimi Places\Containers\ToDos\AEX xml schema\Schema\cfiXmlFull_WorkingReleaseV4.01\GeneratedCode\cfiXML_Writer\bin\Debug\AltovaXML.dll
+C:\Users\e9vp\.Nimi Places\Containers\ToDos\AEX xml schema\Schema\cfiXmlFull_WorkingReleaseV4.01\GeneratedCode\cfiXML_Writer\bin\Debug\eqRotDoc.dll
+C:\Users\e9vp\.Nimi Places\Containers\ToDos\AEX xml schema\Schema\cfiXmlFull_WorkingReleaseV4.01\GeneratedCode\cfiXML_Writer\bin\Debug\AltovaXML.pdb
+C:\Users\e9vp\.Nimi Places\Containers\ToDos\AEX xml schema\Schema\cfiXmlFull_WorkingReleaseV4.01\GeneratedCode\cfiXML_Writer\bin\Debug\Altova.pdb
+C:\Users\e9vp\.Nimi Places\Containers\ToDos\AEX xml schema\Schema\cfiXmlFull_WorkingReleaseV4.01\GeneratedCode\cfiXML_Writer\bin\Debug\eqRotDoc.pdb
+C:\Users\e9vp\.Nimi Places\Containers\ToDos\AEX xml schema\Schema\cfiXmlFull_WorkingReleaseV4.01\GeneratedCode\cfiXML_Writer\obj\x86\Debug\cfiXML_Writer.csprojResolveAssemblyReference.cache
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML_Project_v4Full\cfiXML_Writer\obj\x86\Debug\cfiXML_Writer.exe
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML_Project_v4Full\cfiXML_Writer\obj\x86\Debug\cfiXML_Writer.pdb
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML_Project_v4Full\cfiXML_Writer\bin\Debug\cfiXML_Writer.exe
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML_Project_v4Full\cfiXML_Writer\bin\Debug\cfiXML_Writer.pdb
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML_Project_v4Full\cfiXML_Writer\bin\Debug\Altova.dll
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML_Project_v4Full\cfiXML_Writer\bin\Debug\AltovaXML.dll
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML_Project_v4Full\cfiXML_Writer\bin\Debug\eqRotDoc.dll
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML_Project_v4Full\cfiXML_Writer\bin\Debug\AltovaXML.pdb
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML_Project_v4Full\cfiXML_Writer\bin\Debug\Altova.pdb
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML_Project_v4Full\cfiXML_Writer\bin\Debug\eqRotDoc.pdb
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML_Project_v4Full\cfiXML_Writer\obj\x86\Debug\cfiXML_Writer.csprojResolveAssemblyReference.cache
