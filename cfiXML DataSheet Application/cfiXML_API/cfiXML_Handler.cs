@@ -71,6 +71,7 @@ namespace cfiXML_API
             {
                 _xml = null;
                 // O xml está vazio, sem um nó raiz ou ele não existe.
+                // me apague
             }
 
             if (_xml == null)
