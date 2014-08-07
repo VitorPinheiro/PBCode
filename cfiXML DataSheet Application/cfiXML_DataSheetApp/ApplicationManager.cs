@@ -12,8 +12,6 @@ namespace cfiXML_DataSheetApp
     {
         private string _worksheetPath;
 
-        private string _xmlPath;
-
         private cfiXML_Manager _cfiXML_Manager;
 
         private XLS_Model _xlsModelToUse;
