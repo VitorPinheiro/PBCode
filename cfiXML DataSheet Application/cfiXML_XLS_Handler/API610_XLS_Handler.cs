@@ -70,7 +70,7 @@ namespace cfiXML_XLS_Handler
             {
                 _msExcelWb.Close(true, Type.Missing, false);
             }
-            
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(_msExcelWb); 
             if (_msExcelApp.Workbooks.Count == 0)
             {
                 _msExcelApp.Quit();
