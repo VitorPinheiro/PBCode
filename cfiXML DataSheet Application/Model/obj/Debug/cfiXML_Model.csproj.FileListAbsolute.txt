@@ -19,3 +19,8 @@ C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\Model\bin\Debug\Model.
 C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\Model\obj\Debug\cfiXML_Model.csprojResolveAssemblyReference.cache
 C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\Model\obj\Debug\Model.dll
 C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\Model\obj\Debug\Model.pdb
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApplication Git\PBCode\cfiXML DataSheet Application\Model\bin\Debug\Model.dll
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApplication Git\PBCode\cfiXML DataSheet Application\Model\bin\Debug\Model.pdb
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApplication Git\PBCode\cfiXML DataSheet Application\Model\obj\Debug\cfiXML_Model.csprojResolveAssemblyReference.cache
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApplication Git\PBCode\cfiXML DataSheet Application\Model\obj\Debug\Model.dll
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApplication Git\PBCode\cfiXML DataSheet Application\Model\obj\Debug\Model.pdb

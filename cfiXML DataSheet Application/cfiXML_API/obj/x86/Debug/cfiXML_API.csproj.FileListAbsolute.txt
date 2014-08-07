@@ -31,3 +31,8 @@ C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_API\obj\x86\Deb
 C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_API\obj\x86\Debug\cfiXML_API.pdb
 C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_API\bin\Debug\cfiXML_API.dll
 C:\Users\e6z5\Desktop\PBCode\cfiXML DataSheet Application\cfiXML_API\bin\Debug\cfiXML_API.pdb
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApplication Git\PBCode\cfiXML DataSheet Application\cfiXML_API\bin\Debug\cfiXML_API.dll
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApplication Git\PBCode\cfiXML DataSheet Application\cfiXML_API\bin\Debug\cfiXML_API.pdb
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApplication Git\PBCode\cfiXML DataSheet Application\cfiXML_API\obj\x86\Debug\cfiXML_API.csprojResolveAssemblyReference.cache
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApplication Git\PBCode\cfiXML DataSheet Application\cfiXML_API\obj\x86\Debug\cfiXML_API.dll
+C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApplication Git\PBCode\cfiXML DataSheet Application\cfiXML_API\obj\x86\Debug\cfiXML_API.pdb

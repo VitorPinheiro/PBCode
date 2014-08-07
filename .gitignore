@@ -1,2 +1,7 @@
 *.cache
 *.manifest
+*.dll
+*.pdb
+*.txt
+*.exe
+*.pdb
