@@ -79,7 +79,6 @@ C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApp
 C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApplication Git\PBCode\cfiXML DataSheet Application\cfiXML_DataSheetApp\bin\Debug\cfiXML_XLS_Handler.dll
 C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApplication Git\PBCode\cfiXML DataSheet Application\cfiXML_DataSheetApp\bin\Debug\Model.dll
 C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApplication Git\PBCode\cfiXML DataSheet Application\cfiXML_DataSheetApp\bin\Debug\Altova.dll
-C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApplication Git\PBCode\cfiXML DataSheet Application\cfiXML_DataSheetApp\bin\Debug\AltovaXML.dll
 C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApplication Git\PBCode\cfiXML DataSheet Application\cfiXML_DataSheetApp\bin\Debug\cfiXML_Map_Reader.pdb
 C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApplication Git\PBCode\cfiXML DataSheet Application\cfiXML_DataSheetApp\bin\Debug\cfiXML_XLS_Handler.pdb
 C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheetApplication Git\PBCode\cfiXML DataSheet Application\cfiXML_DataSheetApp\bin\Debug\Model.pdb
