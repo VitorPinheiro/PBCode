@@ -50,8 +50,9 @@ namespace cfiXML_XLS_Handler
 
                 _API_Pages = _msExcelWb.Worksheets["Page1"];
             }
-            catch
+            catch(Exception e)
             {
+                Console.Write(e.Message);
                 _msExcelApp.Quit();
             }
         }

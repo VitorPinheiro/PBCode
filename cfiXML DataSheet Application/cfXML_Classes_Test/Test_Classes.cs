@@ -65,13 +65,16 @@ namespace cfiXML_Classes_Test
             ApplicationManager appMan = new ApplicationManager();
 
             Console.WriteLine("Testando Ler do XLS e escrever no XML:");
-            appMan.ExportToXML(@"C:\Users\e6z5\Desktop\cfiXML DataSheet Application\ArquivosExemplo\API_610_11th_Datasheets_Caue.xlsm", @"C:\Users\e6z5\Desktop\cfiXML DataSheet Application\ArquivosExemplo\TestXML_Caue.xml", "API610_V11");
+            string sourceExcelPath = Path.GetFullPath("../../../ArquivosExemplo/API_610_11th_Datasheets_Caue.xlsm");
+            string targetExcelPath = Path.GetFullPath("../../../ArquivosExemplo/API_610_11th_Datasheets_Caue_4.xlsm");
+            string xmlPath = Path.GetFullPath("../../../ArquivosExemplo/TestXML_Caue.xml");
+            appMan.ExportToXML(sourceExcelPath,xmlPath, "API610_V11");
             //String fileName = Path.GetFileName(@"C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheet Application\ArquivosExemplo\API_610_11th_Datasheets_Joao.xlsm").ToString();
             //int numPoint = fileName.IndexOf(".");
             //fileName = fileName.Remove(numPoint);
             Console.WriteLine("OK");
             Console.WriteLine("Testando Ler do XML e escrever no XLS:");
-            appMan.ImportFromXML(@"C:\Users\e6z5\Desktop\cfiXML DataSheet Application\ArquivosExemplo\API_610_11th_Datasheets_Caue_4.xlsm", @"C:\Users\e6z5\Desktop\cfiXML DataSheet Application\ArquivosExemplo\TestXML_Caue.xml", "API610_V11");
+            appMan.ImportFromXML(targetExcelPath, xmlPath, "API610_V11");
             //Console.WriteLine("OK");
 
 //***************************************************************************************************************************************************************************************************************************
