@@ -184,5 +184,4 @@ FakesAssemblies/
 #Added by Vitor
 *.cache
 *.manifest
-*.txt
 *.exe
