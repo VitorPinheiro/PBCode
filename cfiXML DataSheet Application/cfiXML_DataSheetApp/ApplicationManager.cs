@@ -17,7 +17,7 @@ namespace cfiXML_DataSheetApp
         private IXLS_Handler _xlsHandler;
 
         /// <summary>
-        /// Construtor
+        /// Construtooooooor
         /// </summary>
         public ApplicationManager()
         {
