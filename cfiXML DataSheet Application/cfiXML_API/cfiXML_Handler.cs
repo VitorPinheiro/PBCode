@@ -72,6 +72,7 @@ namespace cfiXML_API
                 Console.WriteLine(e.Message);
                 _xml = null;
                 // O xml está vazio, sem um nó raiz ou ele não existe.
+                // me apague
             }
 
             if (_xml == null)
