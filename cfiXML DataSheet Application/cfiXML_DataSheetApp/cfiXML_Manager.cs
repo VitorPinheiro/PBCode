@@ -13,15 +13,10 @@ namespace cfiXML_DataSheetApp
 {
     public class cfiXML_Manager
     {
-        private cfiXML_Handler _cfiXML_Handler;
+        private cfiXML_Handler _cfiXML_Handler = new cfiXML_Handler();
 
         private Boolean xmlIsLoadedToRead = false;
         private Boolean xmlIsLoadedToWrite = false;
-
-        public cfiXML_Manager()
-        {
-            _cfiXML_Handler = new cfiXML_Handler();
-        }
 
         public void WriteToXML(string xmlPath_Write, List<Data_MapInfo> MapData, List<Revision> RevisionList)
         {

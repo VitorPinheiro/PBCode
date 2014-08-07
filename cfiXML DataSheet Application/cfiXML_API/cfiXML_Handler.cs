@@ -10,8 +10,6 @@ using eqRotDoc.ctx;
 
 namespace cfiXML_API
 {
-
-    //TODO: atualizar sumário
     /// <summary>
     /// - Esta classe vai conter todos os metodos para escrever no xml padrão cfi. Criando um xml utilizando os metodos desta classe, você garante que não vai existir nós
     /// com o mesmo nome. Caso no xml corrente já exista um caminho para ser aproveitado, este caminho será aproveitado para a inserção de um valor.
@@ -32,7 +30,6 @@ namespace cfiXML_API
     /// </summary>
     public partial class cfiXML_Handler
     {
-
         private int _transactionOrder = 1;
 
         private cfiXML_Enums _cfiXML_Enums = new cfiXML_Enums();
@@ -45,7 +42,6 @@ namespace cfiXML_API
         /// Contém o caminho para o xml.
         /// </summary>
         private String _xmlPath = null;
-
 
         // Inicialização do xml
         /// <summary>
@@ -94,8 +90,6 @@ namespace cfiXML_API
                 throw new Exception(Messages._saveToFileErrorMessage);
         }
 
-
-        // Metodos Privados
         /// <summary>
         /// /eqRotDoc:centrifugalPumpDataSheet
         /// </summary>
@@ -103,10 +97,9 @@ namespace cfiXML_API
         /// <returns></returns>
         private CentrifugalPumpDataSheet centrifugalPumpDataSheet2()
         {
-            CentrifugalPumpDataSheet cPumpDataSheet = null;
             if (!_xml.centrifugalPumpDataSheet2.Exists)
             {
-                cPumpDataSheet = _xml.centrifugalPumpDataSheet2.Append();
+                CentrifugalPumpDataSheet cPumpDataSheet = _xml.centrifugalPumpDataSheet2.Append();
 
                 // Trecho de código só para incluir o local do schema no novo xml criado.
                 // Ele tem que ser criado aqui porque é preciso ter ó nó raiz para inclusão deste namespace.
@@ -118,7 +111,6 @@ namespace cfiXML_API
 
             return _xml.centrifugalPumpDataSheet2.First;
         }
-
 
         /// <summary>
         /// /eqRotDoc:centrifugalPumpDataSheet/site:siteFacility
@@ -222,9 +214,9 @@ namespace cfiXML_API
             return cenPump.dataSheetHeader2.First;
         }
 
-        // /eqRotDoc:centrifugalPumpDataSheet/obj:transaction[obj:revision=/eqRotDoc:centrifugalPumpDataSheet/@revision][obj:transactionType="Modified"]/obj:dateTime
         /// <summary>
         /// Este metodo só pode ser utilizado depois que o atributo revisão do centrifugalPump já estiver escrito no xml.
+        /// // /eqRotDoc:centrifugalPumpDataSheet/obj:transaction[obj:revision=/eqRotDoc:centrifugalPumpDataSheet/@revision][obj:transactionType="Modified"]/obj:dateTime
         /// </summary>
         /// <param name="xml"></param>
         /// <returns></returns>
@@ -362,8 +354,6 @@ namespace cfiXML_API
                                 return dSheetHeader.associatedDataSheet2[j];
                             }
                         }
-
-
                     }
                 }
             }
@@ -397,8 +387,6 @@ namespace cfiXML_API
                                 return dSheetHeader.associatedDataSheet2[j];
                             }
                         }
-
-
                     }
                 }
             }
@@ -427,10 +415,6 @@ namespace cfiXML_API
             return dSheetHeader.documentID.First;
         }
 
-
-
-
-
         /// <summary>
         /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump
         /// </summary>
@@ -445,16 +429,6 @@ namespace cfiXML_API
 
             return cenPump.centrifugalPump.First;
         }
-
-        // /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]
-        // /uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/mtrl:referenceProperty="Pumped Fluid Temperature, Max"]/mtrl:vaporP
-
-
-        private void get_referencePropertyNode()
-        {
-
-        }
-
 
         /// <summary>
         /// Em construção... VITOR
@@ -480,19 +454,13 @@ namespace cfiXML_API
 
                         _xml.context.Append().referenceProperty.Append().Value = "Teste";
 
-
-
-
                         //eqRotDoc.eqRotDoc.MemberElement_context ctx = (eqRotDoc.eqRotDoc.MemberElement_context) mProperty.property2[j].context.First;
 
                         eqRotDoc.mtrl.propertyType2.MemberElement_context ctx2 = mProperty.property2[j].context;
 
                         //contextType ctx = (contextType) ctx2;// mProperty.property2[j].context.First;
 
-
                         eqRotDoc.mtrl.contextType cType = mProperty.property2[j].context.First;
-
-
 
                         //if(  ) // Cada property só tem um nó context.
                         //{
@@ -501,13 +469,9 @@ namespace cfiXML_API
                     }
                 }
                 // Já existe um nó property mas nao existe um nó contex com o referenceProperty desejado.
-
             }
             // Nao tem um nó property, cria ele do zero.
-
         }
-
-
 
         /// <summary>
         /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty
@@ -525,7 +489,6 @@ namespace cfiXML_API
 
             return mStream.materialProperty.First;
         }
-
 
         /// <summary>
         /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/etl:propertyType="Maximum"]/mtrl:t
@@ -558,17 +521,14 @@ namespace cfiXML_API
             }
 
             // Passei por todos o mtrl:property e não encontrei um que tenha um context com o property type igual ao desejado pelo argumento, então vou criar um novo nó property com esse context.
-
             eqRotDoc.mtrl.propertyType2 returnNode = mProperty.property2.Append();
             returnNode.context.Append().propertyType3.Append().EnumerationValue = context_PropertyType;
 
             return returnNode;
         }
 
-
-        // /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/uo:materialFlow[etl:flowPropertyType="arg1"][etl:valueSourceType="arg2"]
         /// <summary>
-        /// 
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/uo:materialFlow[etl:flowPropertyType="arg1"][etl:valueSourceType="arg2"]
         /// </summary>
         /// <param name="flowPropertyType">É obrigatório</param>
         /// <param name="valueSourceType">Se for null ele nao poe esse nó</param>
@@ -611,7 +571,6 @@ namespace cfiXML_API
             return returnNode;
         }
 
-
         /// <summary>
         /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/
         /// </summary>
@@ -628,7 +587,6 @@ namespace cfiXML_API
 
             return sConnection.materialStream2.First;
         }
-
 
         /// <summary>
         /// VITOR: Parou aqui, Testar esta classe! Ela vai ser usada para muitos atributos da API
@@ -660,8 +618,6 @@ namespace cfiXML_API
                         { // Existe
                             return eqRotCenPump.streamConnection[j];
                         }
-
-
                     }
                 }
             }
@@ -673,7 +629,6 @@ namespace cfiXML_API
 
             return sConnection;
         }
-
 
         /// <summary>
         /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/dx:orderLine
@@ -691,7 +646,6 @@ namespace cfiXML_API
 
             return eqRotCenPump.orderLine.First;
         }
-
 
         /// <summary>
         /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:applicableStandard
@@ -727,7 +681,6 @@ namespace cfiXML_API
             return eqRotCenPump.id.First;
         }
 
-
         /// <summary>
         /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eq:id/ctx:manufacturerCompany
         /// </summary>
@@ -762,7 +715,6 @@ namespace cfiXML_API
             return eqRotCenPump.serviceCategory.First;
         }
 
-
         /// <summary>
         /// /eqRotDoc:centrifugalPumpDataSheet/dx:dataSheetHeader/dx:alternativeDocumentID[dx:documentType="Requisition"]
         /// </summary>
@@ -784,12 +736,9 @@ namespace cfiXML_API
                                 return dSheetHeader.alternativeDocumentID2[j];
                             }
                         }
-
-
                     }
                 }
             }
-
             // nao existe
             AlternativeDocumentID alternativeDocumentID = dSheetHeader.alternativeDocumentID2.Append();
             alternativeDocumentID.documentType.Append().EnumerationValue = EDocumentTypeType.EnumValues.eRequisition;
@@ -819,12 +768,9 @@ namespace cfiXML_API
                                 return dSheetHeader.alternativeDocumentID2[j];
                             }
                         }
-
-
                     }
                 }
             }
-
             // nao existe
             AlternativeDocumentID alternativeDocumentID = dSheetHeader.alternativeDocumentID2.Append();
             alternativeDocumentID.documentType.Append().EnumerationValue = EDocumentTypeType.EnumValues.ePurchase_Order__P_O_;
@@ -856,54 +802,15 @@ namespace cfiXML_API
                                 return proj.organizationContext[j];
                             }
                         }
-
-
                     }
                 }
             }
-
             // nao existe
             OrganizationContext context = proj.organizationContext.Append();
             context.organizationRole.Append().EnumerationValue = organizationRoleType.EnumValues.eOwner;
 
             return context;
         }
-
-        /******************************************************** Métodos Públicos ********************************************************/
-
-        ///// <summary>
-        ///// Global number 15
-        ///// API Name: applicable overlay standards
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:applicableStandard/eqRot:remark
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpStandardRemark"></param>
-        //public void PumpStandardRemark_Writer(String pumpStandardRemark)
-        //{
-        //    if (pumpStandardRemark == null || pumpStandardRemark.Equals(String.Empty))
-        //        return;
-
-        //    eqRotDoc.eqRot.applicableStandardType4 appStandard = applicableStandard();
-
-        //    if (!appStandard.remark.Exists)
-        //    {
-        //        appStandard.remark.Append();
-        //    }
-
-        //    appStandard.remark.First.Value = pumpStandardRemark;
-        //}
-
-        //public String PumpStandardRemark_Reader()
-        //{
-        //    eqRotDoc.eqRot.applicableStandardType4 appStandard = applicableStandard();
-
-        //    if (!appStandard.remark.Exists)
-        //    {
-        //        return String.Empty;
-        //    }
-
-        //    return appStandard.remark.First.Value;
-        //}
 
         /// <summary>Joao Paulo
         /// Caso especial. Revisões "/eqRotDoc:centrifugalPumpDataSheet/obj:transaction/obj:revision"
@@ -953,905 +860,6 @@ namespace cfiXML_API
             return _transactionList;
         }
 
-        ///// <summary>
-        ///// Global number: 625
-        ///// API Name: Applicable to
-        ///// /eqRotDoc:centrifugalPumpDataSheet/dx:dataSheetHeader/dx:dataSheetType
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="dataSheetType"></param>
-        //public void DataSheetType_Writer(String dataSheetType)
-        //{
-        //    if (dataSheetType == null || dataSheetType.Equals(String.Empty))
-        //        return;
-
-        //    DataSheetHeader dSheetHeader = dataSheetHeader2();
-
-        //    EDocumentTypeType.EnumValues dSheetType = cfiXML_Enums.getDataSheetType(dataSheetType);
-
-        //    if (!dSheetHeader.dataSheetType.Exists)
-        //    {
-        //        // o elemento person só é criado com o elemento shortID e o shortID precisa de um valor
-        //        dSheetHeader.dataSheetType.Append();
-        //    }
-
-        //    if (dSheetType.Equals(EDocumentTypeType.EnumValues.eOther) || dSheetType.Equals(EDocumentTypeType.EnumValues.ecustom))
-        //    {
-        //        dSheetHeader.dataSheetType.First.otherValue.Value = dataSheetType;
-        //        dSheetHeader.dataSheetType.First.EnumerationValue = dSheetType;
-        //    }
-        //    else
-        //    {
-        //        dSheetHeader.dataSheetType.First.EnumerationValue = dSheetType;
-        //    }
-
-        //}
-
-        ///// <summary>
-        ///// Global number: 625
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <returns></returns>
-        //public String DataSheetType_Reader()
-        //{
-        //    DataSheetHeader dSheetHeader = dataSheetHeader2();
-
-        //    if (!dSheetHeader.dataSheetType.Exists)
-        //    {
-        //        return null;
-        //    }
-
-        //    EDocumentTypeType.EnumValues dSheetType = dSheetHeader.dataSheetType.First.EnumerationValue;
-
-        //    if (dSheetType.Equals(EDocumentTypeType.EnumValues.eOther) || dSheetType.Equals(EDocumentTypeType.EnumValues.ecustom))
-        //    {
-        //        return dSheetHeader.dataSheetType.First.otherValue.Value;
-        //    }
-
-        //    return Utils.processEnumValue(dSheetType.ToString());
-        //}
-
-
-        ///// <summary>
-        ///// Global number: 14
-        ///// API name: Applicable ntl / intntl Standard
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:applicableStandard/eqRot:pumpDesignStandard
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpDesignStandard"></param>
-        //public void PumpDesignStandard_Writer(String pumpDesignStandard)
-        //{
-        //    if (pumpDesignStandard == null || pumpDesignStandard.Equals(String.Empty))
-        //        return;
-
-        //    eqRotDoc.eqRot.EPumpDesignStandardType.EnumValues value = cfiXML_Enums.getPumpDesignStandard(pumpDesignStandard);
-
-        //    eqRotDoc.eqRot.applicableStandardType4 appStandardType = applicableStandard();
-
-        //    if (!appStandardType.pumpDesignStandard.Exists)
-        //    {
-        //        appStandardType.pumpDesignStandard.Append();
-        //    }
-
-        //    if (value.Equals(eqRotDoc.eqRot.EPumpDesignStandardType.EnumValues.eOther) || value.Equals(eqRotDoc.eqRot.EPumpDesignStandardType.EnumValues.ecustom)) // Verifiquei no xsd e invalid é usado só na programação. Diz que a varaivel ainda não foi setada.
-        //    {// Tem que criar o nó other ja que o valor que vou escrever no xml nao tem no enumeration.
-        //        // ver como funciona isso na norma
-        //        appStandardType.pumpDesignStandard.First.EnumerationValue = value;
-        //        appStandardType.pumpDesignStandard.First.otherValue.Value = pumpDesignStandard;
-        //    }
-        //    else
-        //    {
-        //        appStandardType.pumpDesignStandard.First.EnumerationValue = value;
-        //    }
-        //}
-
-
-        ///// <summary>
-        ///// Global number: 14
-        ///// API name: Applicable ntl / intntl Standard
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:applicableStandard/eqRot:pumpDesignStandard
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <returns></returns>
-        //public String PumpDesignStandard_Reader()
-        //{
-        //    eqRotDoc.eqRot.applicableStandardType4 appStandardType = applicableStandard();
-
-        //    if (!appStandardType.pumpDesignStandard.Exists)
-        //    {
-        //        return null;
-        //    }
-
-        //    eqRotDoc.eqRot.EPumpDesignStandardType.EnumValues value = appStandardType.pumpDesignStandard.First.EnumerationValue;
-
-        //    if (value.Equals(eqRotDoc.eqRot.EPumpDesignStandardType.EnumValues.eOther) || value.Equals(eqRotDoc.eqRot.EPumpDesignStandardType.EnumValues.ecustom))
-        //    {
-        //        return appStandardType.pumpDesignStandard.First.otherValue.Value;
-        //    }
-
-        //    return Utils.processEnumValue(value.ToString());
-        //}
-
-        ///// <summary>
-        ///// Global Number 539
-        ///// API Name: Site
-        ///// /eqRotDoc:centrifugalPumpDataSheet/site:siteFacility/objb:name
-        ///// 
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="siteName"></param>
-        //public void SiteName_Writer(String siteName)
-        //{
-        //    if (siteName == null || siteName.Equals(String.Empty))
-        //        return;
-
-
-        //    eqRotDoc.site.SiteFacility sFacility = siteFacility();
-
-        //    if (!sFacility.name.Exists)
-        //    {
-        //        sFacility.name.Append();
-        //    }
-
-        //    sFacility.name.First.Value = siteName;
-        //}
-
-
-        ///// <summary>
-        ///// Global Number 539
-        ///// API Name: Site
-        ///// /eqRotDoc:centrifugalPumpDataSheet/site:siteFacility/objb:name
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <returns></returns>
-        //public String SiteName_Reader()
-        //{
-        //    if (_xml == null)
-        //        return null;
-
-        //    eqRotDoc.site.SiteFacility sFacility = siteFacility();
-
-        //    if (!sFacility.name.Exists)
-        //    {
-        //        return null;
-        //    }
-
-        //    return sFacility.name.First.Value;
-        //}
-
-        ///// <summary>
-        ///// Global Number: 391
-        ///// API Name: No Req
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/dx:orderLine/dx:quantity
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpQuantity"></param>
-        //public void PumpQuantity_Writer(String pumpQuantity)
-        //{
-        //    if (pumpQuantity == null || pumpQuantity.Equals(String.Empty))
-        //        return;
-
-        //    OrderLine oLine = orderLine();
-
-        //    if (!oLine.quantity.Exists)
-        //    {
-        //        oLine.quantity.Append();
-        //    }
-
-        //    oLine.quantity.First.Value = pumpQuantity;
-        //}
-
-        ///// <summary>
-        ///// Global Number: 391
-        ///// API Name: No Req
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/dx:orderLine/dx:quantity
-        ///// </summary>
-        ///// <param name="xml"></param>
-        //public String PumpQuantity_Reader()
-        //{
-        //    if (_xml == null)
-        //        return null;
-
-        //    OrderLine oLine = orderLine();
-
-        //    if (!oLine.quantity.Exists)
-        //    {
-        //        return null;
-        //    }
-
-        //    return oLine.quantity.First.Value;
-        //}
-
-
-        ///// <summary>
-        ///// Global Number: 461
-        ///// API Name: Pump Size
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eq:id/eq:partSize
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpPartSize"></param>
-        //public void PumpPartSize_Writer(String pumpPartSize)
-        //{
-        //    if (pumpPartSize == null || pumpPartSize.Equals(String.Empty))
-        //        return;
-
-        //    eqRotDoc.eq.idType cPumpID = centrifugalPump_ID();
-
-        //    if (!cPumpID.partSize.Exists)
-        //    {
-        //        cPumpID.partSize.Append();
-        //    }
-
-        //    cPumpID.partSize.First.Value = pumpPartSize;
-        //}
-
-        ///// <summary>
-        ///// Global Number: 461
-        ///// API Name: Pump Size
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eq:id/eq:partSize
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <returns></returns>
-        //public String PumpPartSize_Reader()
-        //{
-        //    if (_xml == null)
-        //        return null;
-
-        //    eqRotDoc.eq.idType cPumpID = centrifugalPump_ID();
-
-        //    if (!cPumpID.partSize.Exists)
-        //    {
-        //        return null;
-        //    }
-
-        //    return cPumpID.partSize.First.Value;
-        //}
-
-
-        ///// <summary>
-        ///// Global Number: 457
-        ///// API Name: Manufacturer
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eq:id/ctx:manufacturerCompany/objb:name
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpManufacturer"></param>
-        //public void PumpManufacturer_Writer(String pumpManufacturer)
-        //{
-        //    if (pumpManufacturer == null || pumpManufacturer.Equals(String.Empty))
-        //        return;
-
-        //    Organization mCompany = manufacturerCompany();
-
-        //    if (!mCompany.name.Exists)
-        //    {
-        //        mCompany.name.Append();
-        //    }
-
-        //    mCompany.name.First.Value = pumpManufacturer;
-        //}
-
-        ///// <summary>
-        ///// Global Number: 457
-        ///// API Name: Manufacturer
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eq:id/ctx:manufacturerCompany/objb:name
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <returns></returns>
-        //public String PumpManufacturer_Reader()
-        //{
-        //    if (_xml == null)
-        //        return null;
-
-        //    Organization mCompany = manufacturerCompany();
-
-        //    if (!mCompany.name.Exists)
-        //    {
-        //        return null;
-        //    }
-
-        //    return mCompany.name.First.Value;
-        //}
-
-
-        ///// <summary>
-        ///// Global number: 443
-        ///// API Name: Unit
-        ///// /eqRotDoc:centrifugalPumpDataSheet/site:siteFacility/site:facilitySystem/objb:name
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="processUnit"></param>
-        //public void ProcessUnit_Writer(String processUnit)
-        //{
-        //    if (processUnit == null || processUnit.Equals(String.Empty))
-        //        return;
-
-        //    eqRotDoc.site.FacilitySystem fSystem = facilitySystem();
-
-        //    if (!fSystem.name.Exists)
-        //    {
-        //        fSystem.name.Append();
-        //    }
-
-        //    fSystem.name.First.Value = processUnit;
-        //}
-
-
-        ///// <summary>
-        ///// Global number: 443
-        ///// API Name: Unit
-        ///// /eqRotDoc:centrifugalPumpDataSheet/site:siteFacility/site:facilitySystem/objb:name
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <returns></returns>
-        //public String ProcessUnit_Reader()
-        //{
-        //    if (_xml == null)
-        //        return null;
-
-        //    eqRotDoc.site.FacilitySystem fSystem = facilitySystem();
-
-        //    if (!fSystem.name.Exists)
-        //    {
-        //        return null;
-        //    }
-
-        //    return fSystem.name.First.Value;
-        //}
-
-
-        ///// <summary>
-        ///// Global Number 688
-        ///// API Name: Type
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eq:id/eq:partType
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpPartType"></param>
-        //public void PumpPartType_Writer(String pumpPartType)
-        //{
-        //    if (pumpPartType == null || pumpPartType.Equals(String.Empty))
-        //        return;
-
-        //    eqRotDoc.eq.idType cPumpID = centrifugalPump_ID();
-
-        //    if (!cPumpID.partType.Exists)
-        //    {
-        //        cPumpID.partType.Append();
-        //    }
-
-        //    cPumpID.partType.First.Value = pumpPartType;
-        //}
-
-
-        ///// <summary>
-        ///// Global Number 688
-        ///// API Name: Type
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eq:id/eq:partType
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <returns></returns>
-        //public String PumpPartType_Reader()
-        //{
-        //    if (_xml == null)
-        //        return null;
-
-        //    eqRotDoc.eq.idType cPumpID = centrifugalPump_ID();
-
-        //    if (!cPumpID.partType.Exists)
-        //    {
-        //        return null;
-        //    }
-
-        //    return cPumpID.partType.First.Value;
-        //}
-
-
-        ///// <summary>
-        ///// Global Number 458
-        ///// API Name: Model
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eq:id/eq:model
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpModel"></param>
-        //public void PumpModel_Writer(String pumpModel)
-        //{
-        //    if (pumpModel == null || pumpModel.Equals(String.Empty))
-        //        return;
-
-        //    eqRotDoc.eq.idType cPumpID = centrifugalPump_ID();
-
-        //    if (!cPumpID.model.Exists)
-        //    {
-        //        cPumpID.model.Append();
-        //    }
-
-        //    cPumpID.model.First.Value = pumpModel;
-        //}
-
-
-        ///// <summary>
-        ///// Global Number 458
-        ///// API Name: Model
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eq:id/eq:model
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <returns></returns>
-        //public String PumpModel_Reader()
-        //{
-        //    if (_xml == null)
-        //        return null;
-
-        //    eqRotDoc.eq.idType cPumpID = centrifugalPump_ID();
-
-        //    if (!cPumpID.model.Exists)
-        //    {
-        //        return null;
-        //    }
-
-        //    return cPumpID.model.First.Value;
-        //}
-
-
-        ///// <summary>
-        ///// Global number: 555
-        ///// API Name: No Stages
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:numberStage
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpNumberOfStage"></param>
-        //public void PumpNumberOfStage_Writer(String pumpNumberOfStage)
-        //{
-        //    if (pumpNumberOfStage == null || pumpNumberOfStage.Equals(String.Empty))
-        //        return;
-
-        //    eqRotDoc.eqRot.CentrifugalPump cPump = centrifugalPump();
-
-        //    if (!cPump.numberStage.Exists)
-        //    {
-        //        cPump.numberStage.Append();
-        //    }
-
-        //    cPump.numberStage.First.Value = pumpNumberOfStage;
-        //}
-
-
-        ///// <summary>
-        ///// Global number: 555
-        ///// API Name: No Stages
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:numberStage
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <returns></returns>
-        //public String PumpNumberOfStage_Reader()
-        //{
-        //    if (_xml == null)
-        //        return null;
-
-        //    eqRotDoc.eqRot.CentrifugalPump cPump = centrifugalPump();
-
-        //    if (!cPump.numberStage.Exists)
-        //    {
-        //        return null;
-        //    }
-
-        //    return cPump.numberStage.First.Value;
-        //}
-
-
-        ///// <summary>
-        ///// Global number: 293
-        ///// API Name: Liquid Type Or Name
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/objb:name
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpFluidName"></param>
-        //public void PumpFluidName_Writer(String pumpFluidName)
-        //{
-        //    if (pumpFluidName == null || pumpFluidName.Equals(String.Empty))
-        //        return;
-        //    eqRotDoc.uo.MaterialStream mStream = materialStream_OperatingPerformance(eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
-
-        //    if (!mStream.name.Exists)
-        //    {
-        //        mStream.name.Append();
-        //    }
-
-        //    mStream.name.First.Value = pumpFluidName;
-        //}
-
-
-        ///// <summary>
-        ///// Global number: 293
-        ///// API Name: Liquid Type Or Name
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/objb:name
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <returns></returns>
-        //public String PumpFluidName_Reader()
-        //{
-        //    eqRotDoc.uo.MaterialStream mStream = materialStream_OperatingPerformance(eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
-
-        //    if (!mStream.name.Exists)
-        //    {
-        //        return null;
-        //    }
-
-        //    return mStream.name.First.Value;
-        //}
-
-
-
-        ///// <summary>
-        ///// Global Number: 324
-        ///// API Name: Vapor Pressure - Maximum
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/mtrl:referenceProperty="Pumped Fluid Temperature, Max"]/mtrl:vaporP
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpFluidVaporPAtMaxT"></param>
-        //public void PumpFluidVaporPAtMaxT_Writer(String pumpFluidVaporPAtMaxT)
-        //{
-
-        //}
-
-        ///// <summary>
-        ///// Global Number: 349
-        ///// API Name: Vapor Pressure - Minimum
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/mtrl:referenceProperty="Pumped Fluid Temperature, Min"]/mtrl:vaporP
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpFluidVaporPAtMinT"></param>
-        //public void PumpFluidVaporPAtMinT_Writer(String pumpFluidVaporPAtMinT)
-        //{
-
-        //}
-
-
-        ///// <summary>
-        ///// Global Number: 314
-        ///// API Name: Relative Density - Maximum
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/mtrl:referenceProperty="Pumped Fluid Temperature, Max"]/mtrl:specificGravity
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpFluidSGAtMaxT"></param>
-        //public void PumpFluidSGAtMaxT_Writer(String pumpFluidSGAtMaxT)
-        //{
-
-        //}
-
-
-        ///// <summary>
-        ///// Global Number: 341
-        ///// API Name: Relative Density - Minimum
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/mtrl:referenceProperty="Pumped Fluid Temperature, Min"]/mtrl:specificGravity
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpFluidSGAtMinT"></param>
-        //public void PumpFluidSGAtMinT_Writer(String pumpFluidSGAtMinT)
-        //{
-
-        //}
-
-        ///// <summary>
-        ///// Global Number: 550
-        ///// API Name: Specific Heat - Maximum
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/mtrl:referenceProperty="Pumped Fluid Temperature, Max"]/mtrl:cpMass
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpFluidCpMassAtMaxT"></param>
-        //public void PumpFluidCpMassAtMaxT_Writer(String pumpFluidCpMassAtMaxT)
-        //{
-
-        //}
-
-        ///// <summary>
-        ///// Global Number: 346
-        ///// API Name: Specific Heat - Minimum
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/mtrl:referenceProperty="Pumped Fluid Temperature, Min"]/mtrl:cpMass
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpFluidCpMassAtMinT"></param>
-        //public void PumpFluidCpMassAtMinT_Writer(String pumpFluidCpMassAtMinT)
-        //{
-
-        //}
-
-
-        ///// <summary>
-        ///// Global Number: 1921
-        ///// API Name: Viscosity - Maximum
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/mtrl:referenceProperty="Pumped Fluid Temperature, Max"]/mtrl:viscosity
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpFluidDynamicViscosityAtMaxT"></param>
-        //public void PumpFluidDynamicViscosityAtMaxT_Writer(String pumpFluidDynamicViscosityAtMaxT)
-        //{
-
-        //}
-
-
-        ///// <summary>
-        ///// Global Number: 1923
-        ///// API Name: Viscosity - Minimum
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/mtrl:referenceProperty="Pumped Fluid Temperature, Min"]/mtrl:viscosity
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpFluidDynamicViscosityAtMinT_Writer"></param>
-        //public void PumpFluidDynamicViscosityAtMinT_Writer(String pumpFluidDynamicViscosityAtMinT_Writer)
-        //{
-
-        //}
-
-        ///// <summary>
-        ///// Global Number: 681
-        ///// API Name: NPSH Datum
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:npshaDatumLocation
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="nPSHAvailableDatum"></param>
-        //public void NPSHAvailableDatum_Writer(String nPSHAvailableDatum)
-        //{
-
-        //}
-
-        ///// <summary>
-        ///// Global Number: 320
-        ///// API Name: Pumping Temperature - Maximum
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/etl:propertyType="Maximum"]/mtrl:t
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpFluidTMax"></param>
-        //public void PumpFluidTMax_Writer(String pumpFluidTMax)
-        //{
-        //    if (pumpFluidTMax == null || pumpFluidTMax.Equals(String.Empty))
-        //        return;
-        //    eqRotDoc.mtrl.propertyType2 mProperty = mtrl_property_With_context_PropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eMaximum, eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
-
-        //    if (!mProperty.t.Exists)
-        //    {
-        //        mProperty.t.Append();
-        //    }
-
-        //    mProperty.t.First.Value = pumpFluidTMax;
-        //    mProperty.t.First.referencePropertyID.Value = "Pumped Fluid Temperature, Max";
-
-        //}
-
-        ///// <summary>
-        ///// Global Number: 320
-        ///// API Name: Pumping Temperature - Maximum
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/etl:propertyType="Maximum"]/mtrl:t
-        ///// </summary>
-        ///// <returns></returns>
-        //public String PumpFluidTMax_Reader()
-        //{
-        //    eqRotDoc.mtrl.propertyType2 mProperty = mtrl_property_With_context_PropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eMaximum, eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
-
-        //    if (!mProperty.t.Exists)
-        //    {
-        //        return null;
-        //    }
-
-        //    return mProperty.t.First.Value;
-
-        //}
-
-        ///// <summary>
-        ///// Global Number: 452
-        ///// API Name: Pumping Temperature - Reated
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/etl:propertyType="Rated"]/mtrl:t
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpFluidTRated"></param>
-        //public void PumpFluidTRated_Writer(String pumpFluidTRated)
-        //{
-        //    if (pumpFluidTRated == null || pumpFluidTRated.Equals(String.Empty))
-        //        return;
-        //    eqRotDoc.mtrl.propertyType2 mProperty = mtrl_property_With_context_PropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eRated, eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
-
-        //    if (!mProperty.t.Exists)
-        //    {
-        //        mProperty.t.Append();
-        //    }
-
-        //    mProperty.t.First.Value = pumpFluidTRated;
-        //    mProperty.t.First.referencePropertyID.Value = "Pumped Fluid Temperature, Rated";
-        //}
-
-        ///// <summary>
-        ///// Global Number: 452
-        ///// API Name: Pumping Temperature - Reated
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/etl:propertyType="Rated"]/mtrl:t
-        ///// </summary>
-        ///// <returns></returns>
-        //public String PumpFluidTRated_Reader()
-        //{
-        //    eqRotDoc.mtrl.propertyType2 mProperty = mtrl_property_With_context_PropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eRated, eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
-
-        //    if (!mProperty.t.Exists)
-        //    {
-        //        return null;
-        //    }
-
-        //    return mProperty.t.First.Value;
-        //}
-
-        ///// <summary>
-        ///// Global Number: 375
-        ///// API Name: Pumping Temperature - Normal
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/etl:propertyType="Normal"]/mtrl:t
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpFluidTNormal"></param>
-        //public void PumpFluidTNormal_Writer(String pumpFluidTNormal)
-        //{
-        //    if (pumpFluidTNormal == null || pumpFluidTNormal.Equals(String.Empty))
-        //        return;
-        //    eqRotDoc.mtrl.propertyType2 mProperty = mtrl_property_With_context_PropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eNormal, eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
-
-        //    if (!mProperty.t.Exists)
-        //    {
-        //        mProperty.t.Append();
-        //    }
-
-        //    mProperty.t.First.Value = pumpFluidTNormal;
-        //    mProperty.t.First.referencePropertyID.Value = "Pumped Fluid Temperature, Normal";
-        //}
-
-
-        ///// <summary>
-        ///// Global Number: 375
-        ///// API Name: Pumping Temperature - Normal
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/etl:propertyType="Normal"]/mtrl:t
-        ///// </summary>
-        ///// <returns></returns>
-        //public String PumpFluidTNormal_Reader()
-        //{
-        //    eqRotDoc.mtrl.propertyType2 mProperty = mtrl_property_With_context_PropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eNormal, eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
-
-        //    if (!mProperty.t.Exists)
-        //    {
-        //        return null;
-        //    }
-
-        //    return mProperty.t.First.Value;
-        //}
-
-
-        ///// <summary>
-        ///// Global Number: 345
-        ///// API Name: Pumping Temperature - Minimum
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/etl:propertyType="Minimum"]/mtrl:t
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="pumpFluidTMin"></param>
-        //public void PumpFluidTMin_Writer(String pumpFluidTMin)
-        //{
-        //    if (pumpFluidTMin == null || pumpFluidTMin.Equals(String.Empty))
-        //        return;
-        //    eqRotDoc.mtrl.propertyType2 mProperty = mtrl_property_With_context_PropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eMinimum, eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
-
-        //    if (!mProperty.t.Exists)
-        //    {
-        //        mProperty.t.Append();
-        //    }
-
-        //    mProperty.t.First.Value = pumpFluidTMin;
-        //    mProperty.t.First.referencePropertyID.Value = "Pumped Fluid Temperature, Min";
-        //}
-
-
-        ///// <summary>
-        ///// Global Number: 345
-        ///// API Name: Pumping Temperature - Minimum
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/etl:propertyType="Minimum"]/mtrl:t
-        ///// </summary>
-        ///// <returns></returns>
-        //public String PumpFluidTMin_Reader()
-        //{
-        //    eqRotDoc.mtrl.propertyType2 mProperty = mtrl_property_With_context_PropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eMinimum, eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
-
-        //    if (!mProperty.t.Exists)
-        //    {
-        //        return null;
-        //    }
-
-        //    return mProperty.t.First.Value;
-        //}
-
-        ///// <summary>
-        ///// Global Number: 147
-        ///// API Name: Discharge Pressure - Reated
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Outlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/mtrl:referenceProperty="Flowrate, Rated"]/mtrl:p
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="dischargePRated"></param>
-        //public void DischargePRated_Writer(String dischargePRated)
-        //{
-        //    //referenceProperty
-        //}
-
-        ///// <summary>
-        ///// Global number: 418
-        ///// API name: Pumps Operate In
-        ///// /eqRotDoc:centrifugalPumpDataSheet/site:siteFacility/site:facilitySystem/site:equipmentSet/site:equipmentConfiguration/site:configurationType
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <param name="operatingConfiguration"></param>
-        //public void OperatingConfiguration_Writer(String operatingConfiguration)
-        //{
-        //    if (operatingConfiguration == null || operatingConfiguration.Equals(String.Empty))
-        //        return;
-
-        //    eqRotDoc.site.EConfigurationTypeType.EnumValues value = cfiXML_Enums.getOperatingConfigurationType(operatingConfiguration);
-
-
-        //    eqRotDoc.site.EquipmentConfiguration equiConf = equipmentConfiguration();
-
-        //    if (!equiConf.configurationType.Exists)
-        //    {
-        //        equiConf.configurationType.Append();
-        //    }
-
-        //    if (value.Equals(eqRotDoc.site.EConfigurationTypeType.EnumValues.ecustom))
-        //    {// Tem que criar o nó other ja que o valor que vou escrever no xml nao tem no enumeration.
-        //        equiConf.configurationType.First.EnumerationValue = value;
-        //        equiConf.configurationType.First.otherValue.Value = operatingConfiguration;
-        //    }
-        //    else
-        //    {
-        //        equiConf.configurationType.First.EnumerationValue = value;
-        //    }
-
-        //}
-
-        ///// <summary>
-        ///// Global number: 418
-        ///// API name: Pumps Operate In
-        ///// /eqRotDoc:centrifugalPumpDataSheet/site:siteFacility/site:facilitySystem/site:equipmentSet/site:equipmentConfiguration/site:configurationType
-        ///// </summary>
-        ///// <param name="xml"></param>
-        ///// <returns></returns>
-        //public String OperatingConfiguration_Reader()
-        //{
-        //    eqRotDoc.site.EquipmentConfiguration equiConf = equipmentConfiguration();
-
-        //    if (!equiConf.configurationType.Exists)
-        //    {
-        //        return null;
-        //    }
-
-        //    eqRotDoc.site.EConfigurationTypeType.EnumValues value = equiConf.configurationType.First.EnumerationValue;
-
-        //    if (value.Equals(eqRotDoc.site.EConfigurationTypeType.EnumValues.ecustom))
-        //    {
-        //        return equiConf.configurationType.First.otherValue.Value;
-        //    }
-
-        //    return Utils.processEnumValue(value.ToString());
-        //}
-
-        ///// <summary>
-        ///// Global number: 482
-        ///// API name: Suction Pressure - Reated
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/mtrl:referenceProperty="Flowrate, Rated"]/mtrl:p[@basis="absolute"]
-        ///// </summary>
-        ///// <param name="suctionPRated"></param>
-        //public void SuctionPRated_Writer(String suctionPRated)
-        //{
-        //    //referenceProperty
-        //}
-
-        ///// <summary>
-        ///// Global number: 482
-        ///// API name: Suction Pressure - Reated
-        ///// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/mtrl:materialProperty/mtrl:property[mtrl:context/mtrl:referenceProperty="Flowrate, Rated"]/mtrl:p[@basis="absolute"]
-        ///// </summary>
-        ///// <returns></returns>
-        //public String SuctionPRated_Reader()
-        //{
-        //    //referenceProperty
-        //    return null;
-        //}
-
         /// <summary>
         /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:pressureDifference[@usageContext="args1"][@propertyType="args2"]
         /// </summary>
@@ -1877,5 +885,6 @@ namespace cfiXML_API
             pDiff.usageContext.EnumerationValue = usageContext;
             return pDiff;
         }
+
     }
 }

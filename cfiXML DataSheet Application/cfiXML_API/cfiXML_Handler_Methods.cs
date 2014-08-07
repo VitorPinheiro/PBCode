@@ -11,30 +11,10 @@ using eqRotDoc.ctx;
 namespace cfiXML_API
 {
     /// <summary>
-    /// - Esta classe vai conter todos os metodos para escrever no xml padrão cfi. Criando um xml utilizando os metodos desta classe, você garante que não vai existir nós
-    /// com o mesmo nome. Caso no xml corrente já exista um caminho para ser aproveitado, este caminho será aproveitado para a inserção de um valor.
-    /// 
-    /// - Todos os metodos desta classe assumem que nunca irao atualizar um xml, eles sempre vao ser utilizados para criar um novo xml.
-    /// 
-    /// - Todos os metodos só acessam o ultimo só onde ele vai inserir o valor.
-    ///     
-    /// - Todos os métodos que escrevem um valor que seria um enumeration no cfiXML se comportam da seguinte maneira*:
-    ///     Se o string recebido é igual a algum string do enumeration, ele cria o enumeration e o insere no xml.
-    ///     Se o string for diferente, ele insere no enum (Custom ou Other ou Unspecified) e coloca como atributo do nó (atributo = OtherValue) a string recebida.
-    ///     
-    /// 
-    /// 
-    /// 
-    /// 
-    /// (*) De acordo com a espeficicação do cfiXML
+    /// Classe que contém os métodos públicos que geram/lêem do cfiXML (i.e. os métodos que geram os nós que possuem um Global Number HI
     /// </summary>
     public partial class cfiXML_Handler
     {
-        //public MethodsMapping(cfiXML_Handler _cfiXML_Handler)
-        //{
-        //    this._handler = _cfiXML_Handler;
-        //}
-
         /// <summary>
         /// Global number: 241
         /// API name: Comments Page 1
@@ -397,6 +377,14 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(pumpStandardRemark))
                 return;
+            eqRotDoc.eqRot.applicableStandardType4 appStandard = applicableStandard();
+
+            if (!appStandard.remark.Exists)
+            {
+                appStandard.remark.Append();
+            }
+
+            appStandard.remark.First.Value = pumpStandardRemark;
         }
 
         /// <summary>
@@ -407,7 +395,14 @@ namespace cfiXML_API
         /// <returns></returns>
         public String PumpStandardRemark_Reader()
         {
-            return null;
+            eqRotDoc.eqRot.applicableStandardType4 appStandard = applicableStandard();
+
+            if (!appStandard.remark.Exists)
+            {
+                return String.Empty;
+            }
+
+            return appStandard.remark.First.Value;
         }
 
         /// <summary>
@@ -813,6 +808,25 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(dataSheetType))
                 return;
+            DataSheetHeader dSheetHeader = dataSheetHeader2();
+
+            EDocumentTypeType.EnumValues dSheetType = cfiXML_Enums.getDataSheetType(dataSheetType);
+
+            if (!dSheetHeader.dataSheetType.Exists)
+            {
+                // o elemento person só é criado com o elemento shortID e o shortID precisa de um valor
+                dSheetHeader.dataSheetType.Append();
+            }
+
+            if (dSheetType.Equals(EDocumentTypeType.EnumValues.eOther) || dSheetType.Equals(EDocumentTypeType.EnumValues.ecustom))
+            {
+                dSheetHeader.dataSheetType.First.otherValue.Value = dataSheetType;
+                dSheetHeader.dataSheetType.First.EnumerationValue = dSheetType;
+            }
+            else
+            {
+                dSheetHeader.dataSheetType.First.EnumerationValue = dSheetType;
+            }
         }
 
         /// <summary>
@@ -823,7 +837,21 @@ namespace cfiXML_API
         /// <returns></returns>
         public String DataSheetType_Reader()
         {
-            return null;
+            DataSheetHeader dSheetHeader = dataSheetHeader2();
+
+            if (!dSheetHeader.dataSheetType.Exists)
+            {
+                return null;
+            }
+
+            EDocumentTypeType.EnumValues dSheetType = dSheetHeader.dataSheetType.First.EnumerationValue;
+
+            if (dSheetType.Equals(EDocumentTypeType.EnumValues.eOther) || dSheetType.Equals(EDocumentTypeType.EnumValues.ecustom))
+            {
+                return dSheetHeader.dataSheetType.First.otherValue.Value;
+            }
+
+            return Utils.processEnumValue(dSheetType.ToString());
         }
 
         /// <summary>
@@ -1719,6 +1747,25 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(operatingConfiguration))
                 return;
+            eqRotDoc.site.EConfigurationTypeType.EnumValues value = cfiXML_Enums.getOperatingConfigurationType(operatingConfiguration);
+
+
+            eqRotDoc.site.EquipmentConfiguration equiConf = equipmentConfiguration();
+
+            if (!equiConf.configurationType.Exists)
+            {
+                equiConf.configurationType.Append();
+            }
+
+            if (value.Equals(eqRotDoc.site.EConfigurationTypeType.EnumValues.ecustom))
+            {// Tem que criar o nó other ja que o valor que vou escrever no xml nao tem no enumeration.
+                equiConf.configurationType.First.EnumerationValue = value;
+                equiConf.configurationType.First.otherValue.Value = operatingConfiguration;
+            }
+            else
+            {
+                equiConf.configurationType.First.EnumerationValue = value;
+            }
         }
 
         /// <summary>
@@ -1729,7 +1776,21 @@ namespace cfiXML_API
         /// <returns></returns>
         public String OperatingConfiguration_Reader()
         {
-            return null;
+            eqRotDoc.site.EquipmentConfiguration equiConf = equipmentConfiguration();
+
+            if (!equiConf.configurationType.Exists)
+            {
+                return null;
+            }
+
+            eqRotDoc.site.EConfigurationTypeType.EnumValues value = equiConf.configurationType.First.EnumerationValue;
+
+            if (value.Equals(eqRotDoc.site.EConfigurationTypeType.EnumValues.ecustom))
+            {
+                return equiConf.configurationType.First.otherValue.Value;
+            }
+
+            return Utils.processEnumValue(value.ToString());
         }
 
         /// <summary>
@@ -2229,6 +2290,14 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(processUnit))
                 return;
+            eqRotDoc.site.FacilitySystem fSystem = facilitySystem();
+
+            if (!fSystem.name.Exists)
+            {
+                fSystem.name.Append();
+            }
+
+            fSystem.name.First.Value = processUnit;
         }
 
         /// <summary>
@@ -2239,7 +2308,14 @@ namespace cfiXML_API
         /// <returns></returns>
         public String ProcessUnit_Reader()
         {
-            return null;
+            eqRotDoc.site.FacilitySystem fSystem = facilitySystem();
+
+            if (!fSystem.name.Exists)
+            {
+                return null;
+            }
+
+            return fSystem.name.First.Value;
         }
 
         /// <summary>
@@ -2252,6 +2328,25 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(pumpDesignStandard))
                 return;
+            eqRotDoc.eqRot.EPumpDesignStandardType.EnumValues value = cfiXML_Enums.getPumpDesignStandard(pumpDesignStandard);
+
+            eqRotDoc.eqRot.applicableStandardType4 appStandardType = applicableStandard();
+
+            if (!appStandardType.pumpDesignStandard.Exists)
+            {
+                appStandardType.pumpDesignStandard.Append();
+            }
+
+            if (value.Equals(eqRotDoc.eqRot.EPumpDesignStandardType.EnumValues.eOther) || value.Equals(eqRotDoc.eqRot.EPumpDesignStandardType.EnumValues.ecustom)) // Verifiquei no xsd e invalid é usado só na programação. Diz que a varaivel ainda não foi setada.
+            {// Tem que criar o nó other ja que o valor que vou escrever no xml nao tem no enumeration.
+                // ver como funciona isso na norma
+                appStandardType.pumpDesignStandard.First.EnumerationValue = value;
+                appStandardType.pumpDesignStandard.First.otherValue.Value = pumpDesignStandard;
+            }
+            else
+            {
+                appStandardType.pumpDesignStandard.First.EnumerationValue = value;
+            }
         }
 
         /// <summary>
@@ -2262,7 +2357,21 @@ namespace cfiXML_API
         /// <returns></returns>
         public String PumpDesignStandard_Reader()
         {
-            return null;
+            eqRotDoc.eqRot.applicableStandardType4 appStandardType = applicableStandard();
+
+            if (!appStandardType.pumpDesignStandard.Exists)
+            {
+                return null;
+            }
+
+            eqRotDoc.eqRot.EPumpDesignStandardType.EnumValues value = appStandardType.pumpDesignStandard.First.EnumerationValue;
+
+            if (value.Equals(eqRotDoc.eqRot.EPumpDesignStandardType.EnumValues.eOther) || value.Equals(eqRotDoc.eqRot.EPumpDesignStandardType.EnumValues.ecustom))
+            {
+                return appStandardType.pumpDesignStandard.First.otherValue.Value;
+            }
+
+            return Utils.processEnumValue(value.ToString());
         }
 
         /// <summary>
@@ -2436,6 +2545,14 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(pumpFluidName))
                 return;
+            eqRotDoc.uo.MaterialStream mStream = materialStream_OperatingPerformance(eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
+
+            if (!mStream.name.Exists)
+            {
+                mStream.name.Append();
+            }
+
+            mStream.name.First.Value = pumpFluidName;
         }
 
         /// <summary>
@@ -2446,7 +2563,14 @@ namespace cfiXML_API
         /// <returns></returns>
         public String PumpFluidName_Reader()
         {
-            return null;
+            eqRotDoc.uo.MaterialStream mStream = materialStream_OperatingPerformance(eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
+
+            if (!mStream.name.Exists)
+            {
+                return null;
+            }
+
+            return mStream.name.First.Value;
         }
 
         /// <summary>
@@ -2551,6 +2675,15 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(pumpFluidTMax))
                 return;
+            eqRotDoc.mtrl.propertyType2 mProperty = mtrl_property_With_context_PropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eMaximum, eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
+
+            if (!mProperty.t.Exists)
+            {
+                mProperty.t.Append();
+            }
+
+            mProperty.t.First.Value = pumpFluidTMax;
+            mProperty.t.First.referencePropertyID.Value = "Pumped Fluid Temperature, Max";
         }
 
         /// <summary>
@@ -2561,7 +2694,14 @@ namespace cfiXML_API
         /// <returns></returns>
         public String PumpFluidTMax_Reader()
         {
-            return null;
+            eqRotDoc.mtrl.propertyType2 mProperty = mtrl_property_With_context_PropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eMaximum, eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
+
+            if (!mProperty.t.Exists)
+            {
+                return null;
+            }
+
+            return mProperty.t.First.Value;
         }
 
         /// <summary>
@@ -2574,6 +2714,15 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(pumpFluidTMin))
                 return;
+            eqRotDoc.mtrl.propertyType2 mProperty = mtrl_property_With_context_PropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eMinimum, eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
+
+            if (!mProperty.t.Exists)
+            {
+                mProperty.t.Append();
+            }
+
+            mProperty.t.First.Value = pumpFluidTMin;
+            mProperty.t.First.referencePropertyID.Value = "Pumped Fluid Temperature, Min";
         }
 
         /// <summary>
@@ -2584,7 +2733,14 @@ namespace cfiXML_API
         /// <returns></returns>
         public String PumpFluidTMin_Reader()
         {
-            return null;
+            eqRotDoc.mtrl.propertyType2 mProperty = mtrl_property_With_context_PropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eMinimum, eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
+
+            if (!mProperty.t.Exists)
+            {
+                return null;
+            }
+
+            return mProperty.t.First.Value;
         }
 
         /// <summary>
@@ -2597,6 +2753,15 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(pumpFluidTNormal))
                 return;
+            eqRotDoc.mtrl.propertyType2 mProperty = mtrl_property_With_context_PropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eNormal, eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
+
+            if (!mProperty.t.Exists)
+            {
+                mProperty.t.Append();
+            }
+
+            mProperty.t.First.Value = pumpFluidTNormal;
+            mProperty.t.First.referencePropertyID.Value = "Pumped Fluid Temperature, Normal";
         }
 
         /// <summary>
@@ -2607,7 +2772,14 @@ namespace cfiXML_API
         /// <returns></returns>
         public String PumpFluidTNormal_Reader()
         {
-            return null;
+            eqRotDoc.mtrl.propertyType2 mProperty = mtrl_property_With_context_PropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eNormal, eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
+
+            if (!mProperty.t.Exists)
+            {
+                return null;
+            }
+
+            return mProperty.t.First.Value;
         }
 
         /// <summary>
@@ -2620,6 +2792,15 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(pumpFluidTRated))
                 return;
+            eqRotDoc.mtrl.propertyType2 mProperty = mtrl_property_With_context_PropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eRated, eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
+
+            if (!mProperty.t.Exists)
+            {
+                mProperty.t.Append();
+            }
+
+            mProperty.t.First.Value = pumpFluidTRated;
+            mProperty.t.First.referencePropertyID.Value = "Pumped Fluid Temperature, Rated";
         }
 
         /// <summary>
@@ -2630,7 +2811,14 @@ namespace cfiXML_API
         /// <returns></returns>
         public String PumpFluidTRated_Reader()
         {
-            return null;
+            eqRotDoc.mtrl.propertyType2 mProperty = mtrl_property_With_context_PropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eRated, eqRotDoc.etl.ENormalFlowDirectionType.EnumValues.eInlet);
+
+            if (!mProperty.t.Exists)
+            {
+                return null;
+            }
+
+            return mProperty.t.First.Value;
         }
 
         /// <summary>
@@ -2712,6 +2900,14 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(pumpManufacturer))
                 return;
+            Organization mCompany = manufacturerCompany();
+
+            if (!mCompany.name.Exists)
+            {
+                mCompany.name.Append();
+            }
+
+            mCompany.name.First.Value = pumpManufacturer;
         }
 
         /// <summary>
@@ -2722,7 +2918,14 @@ namespace cfiXML_API
         /// <returns></returns>
         public String PumpManufacturer_Reader()
         {
-            return null;
+            Organization mCompany = manufacturerCompany();
+
+            if (!mCompany.name.Exists)
+            {
+                return null;
+            }
+
+            return mCompany.name.First.Value;
         }
 
         /// <summary>
@@ -2735,6 +2938,14 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(pumpModel))
                 return;
+            eqRotDoc.eq.idType cPumpID = centrifugalPump_ID();
+
+            if (!cPumpID.model.Exists)
+            {
+                cPumpID.model.Append();
+            }
+
+            cPumpID.model.First.Value = pumpModel;
         }
 
         /// <summary>
@@ -2745,7 +2956,14 @@ namespace cfiXML_API
         /// <returns></returns>
         public String PumpModel_Reader()
         {
-            return null;
+            eqRotDoc.eq.idType cPumpID = centrifugalPump_ID();
+
+            if (!cPumpID.model.Exists)
+            {
+                return null;
+            }
+
+            return cPumpID.model.First.Value;
         }
 
         /// <summary>
@@ -2758,6 +2976,14 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(pumpNumberOfStage))
                 return;
+            eqRotDoc.eqRot.CentrifugalPump cPump = centrifugalPump();
+
+            if (!cPump.numberStage.Exists)
+            {
+                cPump.numberStage.Append();
+            }
+
+            cPump.numberStage.First.Value = pumpNumberOfStage;
         }
 
         /// <summary>
@@ -2768,7 +2994,14 @@ namespace cfiXML_API
         /// <returns></returns>
         public String PumpNumberOfStage_Reader()
         {
-            return null;
+            eqRotDoc.eqRot.CentrifugalPump cPump = centrifugalPump();
+
+            if (!cPump.numberStage.Exists)
+            {
+                return null;
+            }
+
+            return cPump.numberStage.First.Value;
         }
 
         /// <summary>
@@ -2781,6 +3014,14 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(pumpPartSize))
                 return;
+            eqRotDoc.eq.idType cPumpID = centrifugalPump_ID();
+
+            if (!cPumpID.partSize.Exists)
+            {
+                cPumpID.partSize.Append();
+            }
+
+            cPumpID.partSize.First.Value = pumpPartSize;
         }
 
         /// <summary>
@@ -2791,7 +3032,14 @@ namespace cfiXML_API
         /// <returns></returns>
         public String PumpPartSize_Reader()
         {
-            return null;
+            eqRotDoc.eq.idType cPumpID = centrifugalPump_ID();
+
+            if (!cPumpID.partSize.Exists)
+            {
+                return null;
+            }
+
+            return cPumpID.partSize.First.Value;
         }
 
         /// <summary>
@@ -2804,6 +3052,14 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(pumpPartType))
                 return;
+            eqRotDoc.eq.idType cPumpID = centrifugalPump_ID();
+
+            if (!cPumpID.partType.Exists)
+            {
+                cPumpID.partType.Append();
+            }
+
+            cPumpID.partType.First.Value = pumpPartType;
         }
 
         /// <summary>
@@ -2814,7 +3070,14 @@ namespace cfiXML_API
         /// <returns></returns>
         public String PumpPartType_Reader()
         {
-            return null;
+            eqRotDoc.eq.idType cPumpID = centrifugalPump_ID();
+
+            if (!cPumpID.partType.Exists)
+            {
+                return null;
+            }
+
+            return cPumpID.partType.First.Value;
         }
 
         /// <summary>
@@ -2850,6 +3113,14 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(pumpQuantity))
                 return;
+            OrderLine oLine = orderLine();
+
+            if (!oLine.quantity.Exists)
+            {
+                oLine.quantity.Append();
+            }
+
+            oLine.quantity.First.Value = pumpQuantity;
         }
 
         /// <summary>
@@ -2860,7 +3131,14 @@ namespace cfiXML_API
         /// <returns></returns>
         public String PumpQuantity_Reader()
         {
-            return null;
+            OrderLine oLine = orderLine();
+
+            if (!oLine.quantity.Exists)
+            {
+                return null;
+            }
+
+            return oLine.quantity.First.Value;
         }
 
         /// <summary>
@@ -3632,6 +3910,14 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(siteName))
                 return;
+            eqRotDoc.site.SiteFacility sFacility = siteFacility();
+
+            if (!sFacility.name.Exists)
+            {
+                sFacility.name.Append();
+            }
+
+            sFacility.name.First.Value = siteName;
         }
 
         /// <summary>
@@ -3642,7 +3928,14 @@ namespace cfiXML_API
         /// <returns></returns>
         public String SiteName_Reader()
         {
-            return null;
+            eqRotDoc.site.SiteFacility sFacility = siteFacility();
+
+            if (!sFacility.name.Exists)
+            {
+                return null;
+            }
+
+            return sFacility.name.First.Value;
         }
 
         /// <summary>
