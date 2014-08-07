@@ -51,8 +51,6 @@ namespace cfiXML_ExeForExcel
                 else
                     xmlPath = args[2];
 
-                
-
                 // Executando exportação XLS para XML
                 appMan = new ApplicationManager();
                 appMan.ExportToXML(args[1], xmlPath, XLS_Model.API610_V11.ToString());
