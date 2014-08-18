@@ -7,7 +7,6 @@ using eqRotDoc.dx;
 using eqRotDoc;
 using eqRotDoc.ctx;
 
-
 namespace cfiXML_API
 {
     /// <summary>
