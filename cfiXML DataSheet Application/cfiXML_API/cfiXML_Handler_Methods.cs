@@ -15,6 +15,8 @@ namespace cfiXML_API
     /// </summary>
     public partial class cfiXML_Handler
     {
+
+        #region Page 1
         /// <summary>
         /// Global number: 241
         /// API name: Comments Page 1
@@ -773,8 +775,10 @@ namespace cfiXML_API
             }
 
             return aDataSheet.id.First.Value;
-        }
+        } 
+        #endregion
 
+        #region Page 2
         /// <summary>
         /// Global number: 476
         /// API name: RATED CURVE BEP FLOW (at rated impeller dia)-
@@ -4314,8 +4318,10 @@ namespace cfiXML_API
         public String TropicalizationReq_Reader()
         {
             return null;
-        }
+        } 
+        #endregion
 
+        #region Page 3
         /// <summary>
         /// Global number: 6
         /// API name: LONGITUDINAL DRIVER POSITIONING SCREWS
@@ -7120,8 +7126,10 @@ namespace cfiXML_API
         public String VertPumpDrainLocation_Reader()
         {
             return null;
-        }
+        } 
+        #endregion
 
+        #region Page 4
         /// <summary>
         /// Global number: 303
         /// API name: MANIFOLD PIPING-COOLING WATER
@@ -8040,8 +8048,10 @@ namespace cfiXML_API
         public String SealReservoirMountedOffBaseplate_Reader()
         {
             return null;
-        }
+        } 
+        #endregion
 
+        #region Page 5
         /// <summary>
         /// Global number: 285
         /// API name: DETAILS OF LIFTING DEVICES-
@@ -10386,8 +10396,10 @@ namespace cfiXML_API
         public String TorsionalTransientAnalysisRequired_Reader()
         {
             return null;
-        }
+        } 
+        #endregion
 
+        #region Page 6
         /// <summary>
         /// Global number: 829
         /// API name: STRUCTURAL ANALYSIS
@@ -11973,8 +11985,10 @@ namespace cfiXML_API
         public String VertPumpSumpDiam_Reader()
         {
             return null;
-        }
+        } 
+        #endregion
 
+        #region Page 7
         /// <summary>
         /// Global number: 486
         /// API name: THESE REFERENCES MUST BE LISTED BY THE MANUFACTURER-CASTING FACTORS USED IN DESIGN (TABLE 3)
@@ -12571,7 +12585,8 @@ namespace cfiXML_API
         public String WeldingProcedureQualificationStd_Reader()
         {
             return null;
-        }
+        } 
+        #endregion
 
     }
 }
