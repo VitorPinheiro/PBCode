@@ -62,19 +62,64 @@
 			<documentEquipmentType>Turbine</documentEquipmentType>
 			<id>turbineID</id>
 		</associatedDataSheet>
+		<dataSheetType otherValue="PURCHASE">Other</dataSheetType>
 	</dataSheetHeader>
 	<centrifugalPump xmlns="http://www.cfixml.org/eqRot">
 		<id xmlns="http://www.cfixml.org/eq">
 			<tag taggedItem="Assembly">SIP-001A/B/C/D</tag>
 			<serialNumber>123456789</serialNumber>
 			<specID>SpecID</specID>
+			<partSize>6x10x11B</partSize>
+			<manufacturerCompany xmlns="http://www.cfixml.org/ctx">
+				<name xmlns="http://www.cfixml.org/objb">ABC PUMPS (USA)</name>
+			</manufacturerCompany>
+			<partType>TypeData</partType>
+			<model>MSD2-D</model>
 		</id>
 		<serviceCategory xmlns="http://www.cfixml.org/etl">
 			<serviceDescription>SAFETY INJECTION - BORATED WATER</serviceDescription>
 		</serviceCategory>
+		<applicableStandard>
+			<remark>No comment for applicable standards</remark>
+			<pumpDesignStandard otherValue="API-610">Other</pumpDesignStandard>
+		</applicableStandard>
+		<orderLine xmlns="http://www.cfixml.org/dx">
+			<quantity>1</quantity>
+		</orderLine>
+		<numberStage>43554</numberStage>
 		<streamConnection usageContext="Operating performance">
 			<normalFlowDirection xmlns="http://www.cfixml.org/etl">Inlet</normalFlowDirection>
 			<materialStream xmlns="http://www.cfixml.org/uo">
+				<name xmlns="http://www.cfixml.org/objb">RWSP(+NaTB during safety injection)</name>
+				<materialProperty xmlns="http://www.cfixml.org/mtrl">
+					<property>
+						<context>
+							<propertyType xmlns="http://www.cfixml.org/etl">Maximum</propertyType>
+						</context>
+						<t referencePropertyID="Pumped Fluid Temperature, Max">15</t>
+						<p basis="absolute">5</p>
+					</property>
+					<property>
+						<context>
+							<propertyType xmlns="http://www.cfixml.org/etl">Rated</propertyType>
+						</context>
+						<t referencePropertyID="Pumped Fluid Temperature, Rated">16</t>
+					</property>
+					<property>
+						<context>
+							<propertyType xmlns="http://www.cfixml.org/etl">Normal</propertyType>
+						</context>
+						<t referencePropertyID="Pumped Fluid Temperature, Normal">17</t>
+						<p basis="absolute">6</p>
+					</property>
+					<property>
+						<context>
+							<propertyType xmlns="http://www.cfixml.org/etl">Minimum</propertyType>
+						</context>
+						<t referencePropertyID="Pumped Fluid Temperature, Min">18</t>
+						<p basis="absolute">7</p>
+					</property>
+				</materialProperty>
 				<materialFlow>
 					<flowPropertyType xmlns="http://www.cfixml.org/etl">Maximum</flowPropertyType>
 					<actualVolumetricFlow referencePropertyID="Flowrate, Maximum">11</actualVolumetricFlow>
@@ -92,26 +137,6 @@
 					<flowPropertyType xmlns="http://www.cfixml.org/etl">Minimum</flowPropertyType>
 					<actualVolumetricFlow referencePropertyID="Flowrate, Minimum">14</actualVolumetricFlow>
 				</materialFlow>
-				<materialProperty xmlns="http://www.cfixml.org/mtrl">
-					<property>
-						<context>
-							<propertyType xmlns="http://www.cfixml.org/etl">Maximum</propertyType>
-						</context>
-						<p basis="absolute">5</p>
-					</property>
-					<property>
-						<context>
-							<propertyType xmlns="http://www.cfixml.org/etl">Normal</propertyType>
-						</context>
-						<p basis="absolute">6</p>
-					</property>
-					<property>
-						<context>
-							<propertyType xmlns="http://www.cfixml.org/etl">Minimum</propertyType>
-						</context>
-						<p basis="absolute">7</p>
-					</property>
-				</materialProperty>
 			</materialStream>
 		</streamConnection>
 		<streamConnection usageContext="Operating performance">
@@ -143,6 +168,25 @@
 		<pressureDifference propertyType="Rated" usageContext="Operating performance">2</pressureDifference>
 		<pressureDifference propertyType="Normal" usageContext="Operating performance">3</pressureDifference>
 		<pressureDifference propertyType="Minimum" usageContext="Operating performance">4</pressureDifference>
+		<impeller>
+			<propertyType xmlns="http://www.cfixml.org/etl">Rated</propertyType>
+			<operatingPerformance>
+				<condition>
+					<bestEfficiencyFlowVolume>0.5</bestEfficiencyFlowVolume>
+				</condition>
+			</operatingPerformance>
+		</impeller>
 	</centrifugalPump>
 	<remark xmlns="http://www.cfixml.org/obj">Comentarios</remark>
+	<siteFacility xmlns="http://www.cfixml.org/site">
+		<name xmlns="http://www.cfixml.org/objb">SOMEWHERE MACHINERY WORKS</name>
+		<facilitySystem>
+			<name xmlns="http://www.cfixml.org/objb">REACTOR BLDG</name>
+			<equipmentSet>
+				<equipmentConfiguration>
+					<configurationType>Series</configurationType>
+				</equipmentConfiguration>
+			</equipmentSet>
+		</facilitySystem>
+	</siteFacility>
 </centrifugalPumpDataSheet>

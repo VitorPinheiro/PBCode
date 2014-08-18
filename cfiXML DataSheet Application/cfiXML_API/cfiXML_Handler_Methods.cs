@@ -790,6 +790,12 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(bestEffFlowForRatedImpeller))
                 return;
+            eqRotDoc.eqRot.conditionType5 condition = Condition_ImpellerWithPropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eRated);
+            if (!condition.bestEfficiencyFlowVolume.Exists)
+            {
+                condition.bestEfficiencyFlowVolume.Append();
+            }
+            condition.bestEfficiencyFlowVolume.First.Value = bestEffFlowForRatedImpeller;
         }
 
         /// <summary>
@@ -800,7 +806,13 @@ namespace cfiXML_API
         /// <returns></returns>
         public String BestEffFlowForRatedImpeller_Reader()
         {
-            return null;
+            eqRotDoc.eqRot.conditionType5 condition = Condition_ImpellerWithPropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eRated);
+
+            if (!condition.bestEfficiencyFlowVolume.Exists)
+            {
+                return null;
+            }
+            return condition.bestEfficiencyFlowVolume.First.Value;
         }
 
         /// <summary>
@@ -1843,7 +1855,7 @@ namespace cfiXML_API
         {
             return null;
         }
-
+            
         /// <summary>
         /// Global number: 136
         /// API name: DIFFERENTIAL PRESSURE-Max.

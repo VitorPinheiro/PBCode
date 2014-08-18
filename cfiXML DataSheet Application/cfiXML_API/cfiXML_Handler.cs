@@ -528,6 +528,8 @@ namespace cfiXML_API
             return returnNode;
         }
 
+        
+
         /// <summary>
         /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:streamConnection[@usageContext="Operating performance"][etl:normalFlowDirection="Inlet"]/uo:materialStream/uo:materialFlow[etl:flowPropertyType="arg1"][etl:valueSourceType="arg2"]
         /// </summary>
@@ -859,6 +861,65 @@ namespace cfiXML_API
                 }
             }
             return _transactionList;
+        }
+
+        /// <summary>
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:impeller[etl:propertyType="args1"]/eqRot:operatingPerformance/eqRot:condition/
+        /// </summary>
+        /// <param name="impellerPropertyType"></param>
+        /// <returns></returns>
+        private eqRotDoc.eqRot.conditionType5 Condition_ImpellerWithPropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues impellerPropertyType)
+        {
+            eqRotDoc.eqRot.operatingPerformanceType6 operatingPerformance = OperatingPerformance_ImpellerWithPropertyType(impellerPropertyType);
+
+            if (operatingPerformance.condition.Exists)
+            {
+                return operatingPerformance.condition.First;
+            }
+
+            return operatingPerformance.condition.Append();
+        }
+
+        /// <summary>
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:impeller[etl:propertyType="args1"]/eqRot:operatingPerformance/
+        /// </summary>
+        /// <param name="impellerPropertyType"></param>
+        /// <returns></returns>
+        private eqRotDoc.eqRot.operatingPerformanceType6 OperatingPerformance_ImpellerWithPropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues impellerPropertyType)
+        {
+            eqRotDoc.eqRot.Impeller impeller = ImpellerWithPropertyType(impellerPropertyType);
+            if (impeller.operatingPerformance.Exists)
+            {
+                return impeller.operatingPerformance.First;
+            }
+            
+            return impeller.operatingPerformance.Append();
+        }
+
+        /// <summary>
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:impeller[etl:propertyType="args1"]/
+        /// </summary>
+        /// <param name="impellerPropertyType"></param>
+        /// <returns></returns>
+        private eqRotDoc.eqRot.Impeller ImpellerWithPropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues impellerPropertyType)
+        {
+            eqRotDoc.eqRot.CentrifugalPump cPump = centrifugalPump();
+            eqRotDoc.eqRot.Impeller impeller = null;
+
+            if (cPump.impeller2.Exists)
+            {
+                for (int i = 0; i < cPump.impeller2.Count; i++)
+                {
+                    if (cPump.impeller2[i].propertyType.First.EnumerationValue.Equals(impellerPropertyType))
+                    {
+                        return cPump.impeller2[i];
+                    }
+                }
+            }
+
+            impeller = cPump.impeller2.Append();
+            impeller.propertyType.Append().EnumerationValue = impellerPropertyType;
+            return impeller;
         }
 
         /// <summary>
