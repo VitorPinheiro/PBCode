@@ -23,7 +23,9 @@ namespace cfiXML_API
         public void DataSheetRemark_Writer(String dataSheetRemark)
         {
             if (String.IsNullOrEmpty(dataSheetRemark))
+            {
                 return;
+            }
             CentrifugalPumpDataSheet cenPumpDataSheet = centrifugalPumpDataSheet2();
 
             if (!cenPumpDataSheet.remark.Exists)
