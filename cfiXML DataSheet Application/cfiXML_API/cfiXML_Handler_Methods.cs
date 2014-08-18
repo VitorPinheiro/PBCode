@@ -616,7 +616,7 @@ namespace cfiXML_API
             Altova.Types.DateTime dateTimeAltova = new Altova.Types.DateTime();
             dateTimeAltova.Value = transactionDateTime;
 
-            tran.dateTime.First.Value = dateTimeAltova;
+            tran.dateTime.First.Value = dateTimeAltova;//
         }
 
         // Verificar
