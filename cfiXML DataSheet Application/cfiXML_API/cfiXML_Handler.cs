@@ -43,54 +43,6 @@ namespace cfiXML_API
         /// </summary>
         private String _xmlPath = null;
 
-        // Inicialização do xml
-        /// <summary>
-        /// Método utilizado para criar um novo xml no padrão cfiXML 4.0.
-        /// </summary>
-        /// <param name="xmlPath"></param>
-        public void CreateXML_to_Write(String xmlPath)
-        {
-            _xmlPath = xmlPath;
-            _xml = eqRotDoc.eqRotDoc.CreateDocument();
-        }
-
-        /// <summary>
-        /// Método utilizado para ler um xml no padrão cfiXML 4.0.
-        /// </summary>
-        /// <param name="xmlPath"></param>
-        /// <returns></returns>
-        public Boolean SelectXML_to_Read(String xmlPath)
-        {
-            _xmlPath = xmlPath;
-
-            try
-            {
-                _xml = eqRotDoc.eqRotDoc.LoadFromFile(_xmlPath);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                _xml = null;
-                // O xml está vazio, sem um nó raiz ou ele não existe.
-            }
-
-            if (_xml == null)
-                return false;
-            else
-                return true;
-        }
-
-        /// <summary>
-        /// Método utilizado para salvar as mudanças feitas para um xml. Ao término do uso dos métodos de escrita no XML deve-se utilizar este método para persistir as mudanças no XML.
-        /// </summary>
-        public void SaveToFile()
-        {
-            if (_xmlPath != null && _xml != null)
-                _xml.SaveToFile(_xmlPath, true);
-            else
-                throw new Exception(Messages._saveToFileErrorMessage);
-        }
-
         /// <summary>
         /// /eqRotDoc:centrifugalPumpDataSheet
         /// </summary>
