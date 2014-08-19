@@ -184,6 +184,3 @@ FakesAssemblies/
 #Added by Vitor
 *.cache
 *.exe
-*.xlsm
-*.xlsm
-cfiXML DataSheet Application/ArquivosExemplo/API_610_11th_Datasheets_Caue.xlsm
