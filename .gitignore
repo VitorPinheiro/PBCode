@@ -185,3 +185,4 @@ FakesAssemblies/
 *.cache
 *.exe
 cfiXML DataSheet Application/ArquivosExemplo/*
+cfiXML DataSheet Application/ArquivosExemplo/ultimateDictionary.xlsx
