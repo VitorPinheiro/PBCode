@@ -184,6 +184,7 @@ FakesAssemblies/
 #Added by Vitor
 *.cache
 *.exe
+*.xlsx
 #"cfiXML DataSheet Application/ArquivosExemplo/"
 #"cfiXML DataSheet Application/ArquivosExemplo/*.xlsx"
 #"cfiXML DataSheet Application/ArquivosExemplo/*.xlsm"
