@@ -881,6 +881,13 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(diffHeadMax))
                 return;
+            eqRotDoc.eqRot.conditionType3 condition = ConditionWithPropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eMaximum);
+
+            if (!condition.head.Exists)
+            {
+                condition.head.Append();
+            }
+            condition.head.First.Value = diffHeadMax;
         }
 
         /// <summary>
@@ -891,7 +898,13 @@ namespace cfiXML_API
         /// <returns></returns>
         public String DiffHeadMax_Reader()
         {
-            return null;
+            eqRotDoc.eqRot.conditionType3 condition = ConditionWithPropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eMaximum);
+
+            if (!condition.head.Exists)
+            {
+                return null;
+            }
+            return condition.head.First.Value;
         }
 
         /// <summary>

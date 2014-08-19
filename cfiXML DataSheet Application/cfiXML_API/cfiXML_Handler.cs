@@ -863,8 +863,45 @@ namespace cfiXML_API
             return _transactionList;
         }
 
+        ////eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:operatingPerformance/eqRot:condition[etl:propertyType=""]
+        private eqRotDoc.eqRot.conditionType3 ConditionWithPropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues propertyType)
+        {
+            //eqRotDoc.eqRot.CentrifugalPump cPump = centrifugalPump();
+            eqRotDoc.eqRot.operatingPerformanceType4 operatingPerformance = OperatingPerformance();
+
+            if (operatingPerformance.condition.Exists)
+            {
+                for (int i = 0; i<operatingPerformance.condition.Count; i++)
+                {
+                    if (operatingPerformance.condition[i].propertyType.First.EnumerationValue.Equals(propertyType))
+                    {
+                        return operatingPerformance.condition[i];
+                    }
+                }
+            }
+
+            eqRotDoc.eqRot.conditionType3 condition = operatingPerformance.condition.Append();
+            condition.propertyType.Append().EnumerationValue = propertyType;
+            return condition;
+        }
+
         /// <summary>
-        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:impeller[etl:propertyType="args1"]/eqRot:operatingPerformance/eqRot:condition/
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:operatingPerformance/
+        /// </summary>
+        /// <returns></returns>
+        private eqRotDoc.eqRot.operatingPerformanceType4 OperatingPerformance()
+        {
+            eqRotDoc.eqRot.CentrifugalPump cPump = centrifugalPump();
+
+            if (cPump.operatingPerformance.Exists)
+            {
+                return cPump.operatingPerformance.First;
+            }
+            return cPump.operatingPerformance.Append();
+        }
+
+        /// <summary>
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:impeller[etl:propertyType=""]/eqRot:operatingPerformance/eqRot:condition/
         /// </summary>
         /// <param name="impellerPropertyType"></param>
         /// <returns></returns>
@@ -881,7 +918,7 @@ namespace cfiXML_API
         }
 
         /// <summary>
-        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:impeller[etl:propertyType="args1"]/eqRot:operatingPerformance/
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:impeller[etl:propertyType=""]/eqRot:operatingPerformance/
         /// </summary>
         /// <param name="impellerPropertyType"></param>
         /// <returns></returns>
