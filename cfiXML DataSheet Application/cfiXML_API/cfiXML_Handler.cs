@@ -1056,15 +1056,28 @@ namespace cfiXML_API
 
             eqRotDoc.eqRot.levelingAndAdjustmentType levelingAndAdj = mouting.levelingAndAdjustment.Append();
 
-            
 
-            levelingAndAdj.orientation.First.EnumerationValue = eqRotDoc.eq.EOrientationType.EnumValues.eUnspecified;
-            levelingAndAdj.screwUsage.First.EnumerationValue = eqRotDoc.eqRot.EScrewUsageType.EnumValues.eAlignment;
+            levelingAndAdj.orientation.Append().EnumerationValue = eqRotDoc.eq.EOrientationType.EnumValues.eUnspecified;
+            levelingAndAdj.screwUsage.Append().EnumerationValue = eqRotDoc.eqRot.EScrewUsageType.EnumValues.eAlignment;
 
             return levelingAndAdj;
         }
 
-  
+        /// <summary>
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:baseplate/eqRot:draining 
+        /// </summary>
+        /// <returns></returns>
+        private eqRotDoc.eqRot.drainingType Draining()
+        {
+            eqRotDoc.eqRot.Baseplate baseplate = BasePlate();
+
+            if (!baseplate.draining.Exists)
+            {
+                return baseplate.draining.Append();
+            }
+            return baseplate.draining.First;
+        }
+
 
     }
 }

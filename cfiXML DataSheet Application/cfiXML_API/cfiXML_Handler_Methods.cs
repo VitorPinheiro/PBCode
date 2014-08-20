@@ -4377,7 +4377,14 @@ namespace cfiXML_API
         /// <returns></returns>
         public String BaseplateAlignScrewRequired_Reader()
         {
-            return null;
+            
+            eqRotDoc.eqRot.levelingAndAdjustmentType levelingAndAdj = LevelingAndAdjustmentWith_OrientationAndScrewUsage(eqRotDoc.eq.EOrientation.EnumValues.eUnspecified,eqRotDoc.eqRot.EScrewUsage.EnumValues.eAlignment);
+
+            if (!levelingAndAdj.isRequired.Exists)
+                return String.Empty;
+            else
+                return levelingAndAdj.isRequired.First.Value;
+
         }
 
         /// <summary>
@@ -4427,6 +4434,14 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(baseplateDrain))
                 return;
+            eqRotDoc.eqRot.drainingType draining = Draining();
+
+            if (!draining.baseplateDrain.Exists)
+            {
+                draining.baseplateDrain.Append().Value = baseplateDrain;
+                return;
+            }
+            draining.baseplateDrain.First.Value = baseplateDrain;
         }
 
         /// <summary>
@@ -4437,7 +4452,12 @@ namespace cfiXML_API
         /// <returns></returns>
         public String BaseplateDrain_Reader()
         {
-            return null;
+            eqRotDoc.eqRot.drainingType draining = Draining();
+
+            if (!draining.baseplateDrain.Exists)
+                return String.Empty;
+
+            return draining.baseplateDrain.First.Value;
         }
 
         /// <summary>
