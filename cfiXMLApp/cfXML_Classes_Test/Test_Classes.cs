@@ -68,7 +68,7 @@ namespace cfiXML_Classes_Test
             string sourceExcelPath = Path.GetFullPath("../../../ArquivosExemplo/API_610_11th_Datasheets_Caue.xlsm");
             string targetExcelPath = Path.GetFullPath("../../../ArquivosExemplo/API_610_11th_Datasheets_Caue_4.xlsm");
             string xmlPath = Path.GetFullPath("../../../ArquivosExemplo/TestXML_Caue.xml");
-            appMan.ExportToXML(sourceExcelPath,xmlPath, "API610_V11");
+            appMan.ExportToXML(sourceExcelPath, xmlPath, "API610_V11");
             //String fileName = Path.GetFileName(@"C:\Users\e9vp\.Nimi Places\Containers\Projetos Visual Studio\cfiXML DataSheet Application\ArquivosExemplo\API_610_11th_Datasheets_Joao.xlsm").ToString();
             //int numPoint = fileName.IndexOf(".");
             //fileName = fileName.Remove(numPoint);

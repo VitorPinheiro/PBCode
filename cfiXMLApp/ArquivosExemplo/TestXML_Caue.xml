@@ -173,6 +173,18 @@
 				<propertyType xmlns="http://www.cfixml.org/etl">Maximum</propertyType>
 				<head>19</head>
 			</condition>
+			<condition>
+				<propertyType xmlns="http://www.cfixml.org/etl">Rated</propertyType>
+				<head valueSourceType="Required">22</head>
+			</condition>
+			<condition>
+				<propertyType xmlns="http://www.cfixml.org/etl">Normal</propertyType>
+				<head>21</head>
+			</condition>
+			<condition>
+				<propertyType xmlns="http://www.cfixml.org/etl">Minimum</propertyType>
+				<head>20</head>
+			</condition>
 		</operatingPerformance>
 		<impeller>
 			<propertyType xmlns="http://www.cfixml.org/etl">Rated</propertyType>

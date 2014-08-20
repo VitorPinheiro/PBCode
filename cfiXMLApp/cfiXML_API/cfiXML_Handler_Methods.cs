@@ -917,6 +917,13 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(diffHeadMin))
                 return;
+            eqRotDoc.eqRot.conditionType3 condition = ConditionWithPropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eMinimum);
+
+            if (!condition.head.Exists)
+            {
+                condition.head.Append();
+            }
+            condition.head.First.Value = diffHeadMin;
         }
 
         /// <summary>
@@ -927,7 +934,13 @@ namespace cfiXML_API
         /// <returns></returns>
         public String DiffHeadMin_Reader()
         {
-            return null;
+            eqRotDoc.eqRot.conditionType3 condition = ConditionWithPropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eMinimum);
+
+            if (!condition.head.Exists)
+            {
+                return null;
+            }
+            return condition.head.First.Value;
         }
 
         /// <summary>
@@ -940,6 +953,13 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(diffHeadNormal))
                 return;
+            eqRotDoc.eqRot.conditionType3 condition = ConditionWithPropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eNormal);
+
+            if (!condition.head.Exists)
+            {
+                condition.head.Append();
+            }
+            condition.head.First.Value = diffHeadNormal;
         }
 
         /// <summary>
@@ -950,7 +970,13 @@ namespace cfiXML_API
         /// <returns></returns>
         public String DiffHeadNormal_Reader()
         {
-            return null;
+            eqRotDoc.eqRot.conditionType3 condition = ConditionWithPropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eNormal);
+
+            if (!condition.head.Exists)
+            {
+                return null;
+            }
+            return condition.head.First.Value;
         }
 
         /// <summary>
@@ -963,6 +989,13 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(diffHeadRatedRequired))
                 return;
+            eqRotDoc.eqRot.conditionType3 condition = ConditionWithPropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eRated);
+
+            if (!condition.head.Exists)
+            {
+                condition.head.Append().valueSourceType.EnumerationValue = eqRotDoc.etl.EValueSourceType.EnumValues.eRequired;
+            }
+            condition.head.First.Value = diffHeadRatedRequired;
         }
 
         /// <summary>
@@ -973,7 +1006,23 @@ namespace cfiXML_API
         /// <returns></returns>
         public String DiffHeadRatedRequired_Reader()
         {
-            return null;
+            eqRotDoc.eqRot.conditionType3 condition = ConditionWithPropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues.eRated);
+
+            if (!condition.head.Exists)
+            {
+                return null;
+            }
+            else
+            {
+                if (!condition.head.First.valueSourceType.EnumerationValue.Equals(eqRotDoc.etl.EValueSourceType.EnumValues.eRequired))
+                {
+                    return null;
+                }
+                else
+                {
+                    return condition.head.First.Value;
+                }
+            }
         }
 
         /// <summary>

@@ -863,10 +863,13 @@ namespace cfiXML_API
             return _transactionList;
         }
 
-        ////eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:operatingPerformance/eqRot:condition[etl:propertyType=""]
+        /// <summary>
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:operatingPerformance/eqRot:condition[etl:propertyType=""]
+        /// </summary>
+        /// <param name="propertyType"></param>
+        /// <returns></returns>
         private eqRotDoc.eqRot.conditionType3 ConditionWithPropertyType(eqRotDoc.etl.EPropertyTypeType.EnumValues propertyType)
         {
-            //eqRotDoc.eqRot.CentrifugalPump cPump = centrifugalPump();
             eqRotDoc.eqRot.operatingPerformanceType4 operatingPerformance = OperatingPerformance();
 
             if (operatingPerformance.condition.Exists)
@@ -879,7 +882,7 @@ namespace cfiXML_API
                     }
                 }
             }
-
+            
             eqRotDoc.eqRot.conditionType3 condition = operatingPerformance.condition.Append();
             condition.propertyType.Append().EnumerationValue = propertyType;
             return condition;
