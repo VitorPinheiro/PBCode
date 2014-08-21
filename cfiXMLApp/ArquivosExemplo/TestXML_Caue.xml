@@ -195,7 +195,7 @@
 			</operatingPerformance>
 		</impeller>
 		<attachedDriver>
-			<driverType otherValue="MOTOR">custom</driverType>
+			<driverType otherValue="STEAM TURBINE">custom</driverType>
 		</attachedDriver>
 	</centrifugalPump>
 	<remark xmlns="http://www.cfixml.org/obj">Comentarios</remark>
