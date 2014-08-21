@@ -2358,6 +2358,7 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(pumpDesignStandard))
                 return;
+
             eqRotDoc.eqRot.EPumpDesignStandardType.EnumValues value = cfiXML_Enums.getPumpDesignStandard(pumpDesignStandard);
 
             eqRotDoc.eqRot.applicableStandardType4 appStandardType = applicableStandard();
@@ -4441,7 +4442,7 @@ namespace cfiXML_API
                 draining.baseplateDrain.Append().Value = baseplateDrain;
                 return;
             }
-            draining.baseplateDrain.First.Value = baseplateDrain;
+            draining.baseplateDrain.First.EnumerationValue = cfiXML_Enums.getBaseplateDrainig(baseplateDrain);
         }
 
         /// <summary>

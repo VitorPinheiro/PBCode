@@ -1078,6 +1078,30 @@ namespace cfiXML_API
             return baseplate.draining.First;
         }
 
+        /// <summary>
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:baseplate/eqRot:draining[eqRot:baseplateDrain="Drain connection"]
+        /// </summary>
+        /// <returns></returns>
+        private eqRotDoc.eqRot.drainingType DrainingWith_BasePlateDrain(eqRotDoc.eqRot.EBaseplateDrainType.EnumValues basePlateDrain)
+        {
+            eqRotDoc.eqRot.Baseplate baseplate = BasePlate();
 
+            if (!baseplate.draining.Exists)
+            {
+                for (int i = 0; i < baseplate.draining.Count; i++)
+                {
+                    if (baseplate.draining[i].baseplateDrain.First.EnumerationValue.Equals(basePlateDrain))
+                    {
+                        return baseplate.draining[i];
+                    }
+                }
+            }
+            eqRotDoc.eqRot.drainingType draining = Draining();
+            
+            draining.baseplateDrain.Append().EnumerationValue = basePlateDrain;
+
+            return draining;
+
+        }
     }
 }
