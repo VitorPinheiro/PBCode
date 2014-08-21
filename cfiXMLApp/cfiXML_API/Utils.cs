@@ -29,23 +29,23 @@ namespace cfiXML_API
             return enumValue.Substring(1);
         }
 
-        public static Nullable<Boolean> processYesOrNo(String boolean)
+        public static String processYesOrNo(String boolean)
         {
             if (String.IsNullOrEmpty(boolean))
             {
                 return null;
             }
-            else if (boolean.Equals("Yes"))
+            else if (boolean.Equals("Yes")||boolean.Equals("YES"))
             {
-                return true;
+                return "true";
             }
-            else if (boolean.Equals("No"))
+            else if (boolean.Equals("No") || boolean.Equals("NO"))
             {
-                return false;
+                return "false";
             }
             else
             {
-                throw new Exception("valor de boolean não disponível ('Yes' ou 'No')");
+                throw new Exception("valor de boolean não disponível ('YES', 'Yes', 'NO' ou 'No')");
             }
         }
     }

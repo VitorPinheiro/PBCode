@@ -1059,7 +1059,6 @@ namespace cfiXML_API
 
             eqRotDoc.eqRot.levelingAndAdjustmentType levelingAndAdj = mouting.levelingAndAdjustment.Append();
 
-
             levelingAndAdj.orientation.Append().EnumerationValue = eqRotDoc.eq.EOrientationType.EnumValues.eUnspecified;
             levelingAndAdj.screwUsage.Append().EnumerationValue = eqRotDoc.eqRot.EScrewUsageType.EnumValues.eAlignment;
 
@@ -1089,10 +1088,7 @@ namespace cfiXML_API
 
         {
             eqRotDoc.eqRot.Baseplate baseplate = BasePlate();
-
             if (!baseplate.draining.Exists)
-
-
             {
                 for (int i = 0; i < baseplate.draining.Count; i++)
                 {
@@ -1104,12 +1100,8 @@ namespace cfiXML_API
 
             }
             eqRotDoc.eqRot.drainingType draining = Draining();
-            
             draining.baseplateDrain.Append().EnumerationValue = basePlateDrain;
-
             return draining;
-
-
         }
 
         /// <summary>
@@ -1124,5 +1116,21 @@ namespace cfiXML_API
             }
             return cPump.attachedDriver.Append();
         }
+
+        /// <summary>
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:gear/
+        /// </summary>
+        private eqRotDoc.eqRot.Gear Gear()
+        {
+            eqRotDoc.eqRot.CentrifugalPump cPump = centrifugalPump();
+
+            if (cPump.gear2.Exists)
+            {
+                return cPump.gear2.First;
+            }
+            return cPump.gear2.Append();
+
+        }
+
     }
 }

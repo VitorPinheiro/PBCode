@@ -1510,6 +1510,12 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(gearRequired))
                 return;
+            eqRotDoc.eqRot.Gear gear = Gear();
+            if (!gear.isRequired.Exists)
+            {
+                gear.isRequired.Append();
+            }
+            gear.isRequired.First.Value = Utils.processYesOrNo(gearRequired);
         }
 
         /// <summary>
@@ -1520,6 +1526,8 @@ namespace cfiXML_API
         /// <returns></returns>
         public String GearRequired_Reader()
         {
+            eqRotDoc.eqRot.Gear gear = Gear();
+            
             return null;
         }
 
