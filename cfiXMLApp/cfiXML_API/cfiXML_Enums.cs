@@ -291,5 +291,75 @@ namespace cfiXML_API
 
             return eqRotDoc.site.EConfigurationTypeType.EnumValues.ecustom;
         }
+
+        /// <summary>
+        /// Enum correspondente: eqRotDoc.eqRot.EDriverTypeType.EnumValues
+        /// A API 610 contém apenas as opções "Motor" e "Steam Turbine"
+        /// </summary>
+        /// <param name="driverType"></param>
+        /// <returns></returns>
+        public static eqRotDoc.eqRot.EDriverTypeType.EnumValues getDriverType(String driverType)
+        {
+            if (String.IsNullOrEmpty(driverType))
+            {
+                return eqRotDoc.eqRot.EDriverTypeType.EnumValues.eNil;
+            }
+            if (driverType.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EDriverTypeType.EnumValues.eElectricMotor.ToString()), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return eqRotDoc.eqRot.EDriverTypeType.EnumValues.eElectricMotor;
+            }
+            else if (driverType.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EDriverTypeType.EnumValues.eSteamTurbine.ToString()), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return eqRotDoc.eqRot.EDriverTypeType.EnumValues.eSteamTurbine;
+            }
+            else if (driverType.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EDriverTypeType.EnumValues.eDieselEngine.ToString()), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return eqRotDoc.eqRot.EDriverTypeType.EnumValues.eDieselEngine;
+            }
+            else if (driverType.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EDriverTypeType.EnumValues.eEngine.ToString()), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return eqRotDoc.eqRot.EDriverTypeType.EnumValues.eEngine;
+            }
+            else if (driverType.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EDriverTypeType.EnumValues.egas_expander.ToString()), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return eqRotDoc.eqRot.EDriverTypeType.EnumValues.egas_expander;
+            }
+            else if (driverType.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EDriverTypeType.EnumValues.eGasEngine.ToString()), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return eqRotDoc.eqRot.EDriverTypeType.EnumValues.eGasEngine;
+            }
+            else if (driverType.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EDriverTypeType.EnumValues.eGasTurbine.ToString()), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return eqRotDoc.eqRot.EDriverTypeType.EnumValues.eGasTurbine;
+            }
+            else if (driverType.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EDriverTypeType.EnumValues.ehydraulic_motor.ToString()), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return eqRotDoc.eqRot.EDriverTypeType.EnumValues.ehydraulic_motor;
+            }
+            else if (driverType.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EDriverTypeType.EnumValues.eHydraulicTurbine.ToString()), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return eqRotDoc.eqRot.EDriverTypeType.EnumValues.eHydraulicTurbine;
+            }
+            else if (driverType.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EDriverTypeType.EnumValues.enone.ToString()), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return eqRotDoc.eqRot.EDriverTypeType.EnumValues.enone;
+            }
+            else if (driverType.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EDriverTypeType.EnumValues.eTurbine.ToString()), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return eqRotDoc.eqRot.EDriverTypeType.EnumValues.eTurbine;
+            }
+            else if (driverType.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EDriverTypeType.EnumValues.eunspecified.ToString()), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return eqRotDoc.eqRot.EDriverTypeType.EnumValues.eunspecified;
+            }
+            else if (driverType.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EDriverTypeType.EnumValues.eother.ToString()), StringComparison.InvariantCultureIgnoreCase))
+            {
+                return eqRotDoc.eqRot.EDriverTypeType.EnumValues.eother;
+            }
+            else
+            {
+                return eqRotDoc.eqRot.EDriverTypeType.EnumValues.ecustom;
+            }
+        }
     }
 }

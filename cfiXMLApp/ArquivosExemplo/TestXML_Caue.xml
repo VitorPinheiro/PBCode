@@ -194,6 +194,9 @@
 				</condition>
 			</operatingPerformance>
 		</impeller>
+		<attachedDriver>
+			<driverType otherValue="MOTOR">custom</driverType>
+		</attachedDriver>
 	</centrifugalPump>
 	<remark xmlns="http://www.cfixml.org/obj">Comentarios</remark>
 	<siteFacility xmlns="http://www.cfixml.org/site">

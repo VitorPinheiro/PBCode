@@ -842,7 +842,7 @@ namespace cfiXML_API
             }
             else
             {
-                dSheetHeader.dataSheetType.First.EnumerationValue = dSheetType;
+                dSheetHeader.dataSheetType.First.EnumerationValue = dSheetType;                
             }
         }
 
@@ -1145,6 +1145,7 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(dischargePRated))
                 return;
+            //problema com referenceProperty
         }
 
         /// <summary>
@@ -1156,6 +1157,7 @@ namespace cfiXML_API
         public String DischargePRated_Reader()
         {
             return null;
+            //problema com referenceProperty
         }
 
         /// <summary>
@@ -1306,6 +1308,24 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(driverType))
                 return;
+            eqRotDoc.eqRot.attachedDriverType4 attachedDriver = AttachedDriver();
+            eqRotDoc.eqRot.EDriverTypeType.EnumValues enumValue = cfiXML_Enums.getDriverType(driverType);
+
+            if (!attachedDriver.driverType.Exists)
+            {
+                attachedDriver.driverType.Append();
+            }
+
+            if (enumValue.Equals(eqRotDoc.eqRot.EDriverTypeType.EnumValues.eother) || enumValue.Equals(eqRotDoc.eqRot.EDriverTypeType.EnumValues.ecustom))
+            {
+                attachedDriver.driverType.First.otherValue.Value = driverType;
+                attachedDriver.driverType.First.EnumerationValue = enumValue;
+            }
+            else
+            {
+                attachedDriver.driverType.First.EnumerationValue = cfiXML_Enums.getDriverType(driverType);
+
+            }
         }
 
         /// <summary>
@@ -1316,7 +1336,16 @@ namespace cfiXML_API
         /// <returns></returns>
         public String DriverType_Reader()
         {
-            return null;
+            eqRotDoc.eqRot.attachedDriverType4 attachedDriver = AttachedDriver();
+            if (!attachedDriver.driverType.Exists)
+            {
+                return null;
+            }
+            if (attachedDriver.driverType.First.EnumerationValue.Equals(eqRotDoc.eqRot.EDriverTypeType.EnumValues.eother) || attachedDriver.driverType.First.EnumerationValue.Equals(eqRotDoc.eqRot.EDriverTypeType.EnumValues.ecustom))
+            {
+                return attachedDriver.driverType.First.otherValue.Value;
+            }
+            return Utils.processEnumValue(attachedDriver.driverType.First.EnumerationValue.ToString());
         }
 
         /// <summary>

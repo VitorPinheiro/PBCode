@@ -988,5 +988,17 @@ namespace cfiXML_API
             return pDiff;
         }
 
+        /// <summary>
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:attachedDriver/
+        /// </summary>
+        private eqRotDoc.eqRot.attachedDriverType4 AttachedDriver()
+        {
+            eqRotDoc.eqRot.CentrifugalPump cPump = centrifugalPump();
+            if (cPump.attachedDriver.Exists)
+            {
+                return cPump.attachedDriver.First;
+            }
+            return cPump.attachedDriver.Append();
+        }
     }
 }
