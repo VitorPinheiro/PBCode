@@ -2407,6 +2407,7 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(pumpDesignStandard))
                 return;
+
             eqRotDoc.eqRot.EPumpDesignStandardType.EnumValues value = cfiXML_Enums.getPumpDesignStandard(pumpDesignStandard);
 
             eqRotDoc.eqRot.applicableStandardType4 appStandardType = applicableStandard();
@@ -4407,6 +4408,15 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(baseplateAlignScrewRequired))
                 return;
+
+            eqRotDoc.eqRot.levelingAndAdjustmentType levelingAjustment = LevelingAndAdjustmentWith_OrientationAndScrewUsage(eqRotDoc.eq.EOrientation.EnumValues.eUnspecified, eqRotDoc.eqRot.EScrewUsage.EnumValues.eAlignment);
+            if (!levelingAjustment.isRequired.Exists)
+            {
+                levelingAjustment.isRequired.Append();
+            }
+
+            levelingAjustment.isRequired.First.Value = baseplateAlignScrewRequired;
+            
         }
 
         /// <summary>
@@ -4417,7 +4427,14 @@ namespace cfiXML_API
         /// <returns></returns>
         public String BaseplateAlignScrewRequired_Reader()
         {
-            return null;
+            
+            eqRotDoc.eqRot.levelingAndAdjustmentType levelingAndAdj = LevelingAndAdjustmentWith_OrientationAndScrewUsage(eqRotDoc.eq.EOrientation.EnumValues.eUnspecified,eqRotDoc.eqRot.EScrewUsage.EnumValues.eAlignment);
+
+            if (!levelingAndAdj.isRequired.Exists)
+                return String.Empty;
+            else
+                return levelingAndAdj.isRequired.First.Value;
+
         }
 
         /// <summary>
@@ -4430,6 +4447,12 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(baseplateAPINumber))
                 return;
+            eqRotDoc.eqRot.applicableStandardType2 applicablestandard = ApplicableStandard_Baseplate();
+            if (!applicablestandard.baseplateNumber.Exists)
+            {
+                applicablestandard.baseplateNumber.Append();
+            }
+            applicablestandard.baseplateNumber.First.Value = baseplateAPINumber;   
         }
 
         /// <summary>
@@ -4440,7 +4463,15 @@ namespace cfiXML_API
         /// <returns></returns>
         public String BaseplateAPINumber_Reader()
         {
-            return null;
+            eqRotDoc.eqRot.applicableStandardType2 applicableStandard = ApplicableStandard_Baseplate();
+            if (applicableStandard.baseplateNumber.Exists)
+            {
+                return applicableStandard.baseplateNumber.First.Value;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -4453,6 +4484,14 @@ namespace cfiXML_API
         {
             if (String.IsNullOrEmpty(baseplateDrain))
                 return;
+            eqRotDoc.eqRot.drainingType draining = Draining();
+
+            if (!draining.baseplateDrain.Exists)
+            {
+                draining.baseplateDrain.Append().Value = baseplateDrain;
+                return;
+            }
+            draining.baseplateDrain.First.EnumerationValue = cfiXML_Enums.getBaseplateDrainig(baseplateDrain);
         }
 
         /// <summary>
@@ -4463,7 +4502,12 @@ namespace cfiXML_API
         /// <returns></returns>
         public String BaseplateDrain_Reader()
         {
-            return null;
+            eqRotDoc.eqRot.drainingType draining = Draining();
+
+            if (!draining.baseplateDrain.Exists)
+                return String.Empty;
+
+            return draining.baseplateDrain.First.Value;
         }
 
         /// <summary>

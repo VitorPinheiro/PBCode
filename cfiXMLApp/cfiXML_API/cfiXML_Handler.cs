@@ -988,5 +988,123 @@ namespace cfiXML_API
             return pDiff;
         }
 
+        /// <summary>
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:baseplate/eqRot:applicableStandard
+        /// </summary>
+        /// <returns></returns>
+        private eqRotDoc.eqRot.applicableStandardType2 ApplicableStandard_Baseplate()
+        {
+            eqRotDoc.eqRot.Baseplate baseplate = BasePlate();
+            if (!baseplate.applicableStandard.Exists)
+            {
+                return baseplate.applicableStandard.Append();
+            }
+            else
+            {
+                return baseplate.applicableStandard.First;
+            }
+        }
+
+        /// <summary>
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:baseplate
+        /// </summary>
+        private eqRotDoc.eqRot.Baseplate BasePlate()
+        {
+            eqRotDoc.eqRot.CentrifugalPump cpump = centrifugalPump();
+            if (!cpump.baseplate2.Exists)
+            {
+                return cpump.baseplate2.Append();
+            }
+            else
+            {
+                return cpump.baseplate2.First;
+            }
+        }
+
+        /// <summary>
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:baseplate/eqRot:mounting
+        /// </summary>
+        /// <returns></returns>
+        private eqRotDoc.eqRot.mountingType Mouting()
+        {
+            eqRotDoc.eqRot.Baseplate baseplate = BasePlate();
+            if (baseplate.mounting.Exists)
+            {
+                return baseplate.mounting.First;
+            }
+            else
+            {
+                return baseplate.mounting.Append();
+            }
+        }
+
+        /// <summary>
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:baseplate/eqRot:mounting/eqRot:levelingAndAdjustment[eqRot:screwUsage=""][eq:orientation=""]
+        /// </summary>
+        /// <returns></returns>
+        private eqRotDoc.eqRot.levelingAndAdjustmentType LevelingAndAdjustmentWith_OrientationAndScrewUsage(eqRotDoc.eq.EOrientation.EnumValues orientation, eqRotDoc.eqRot.EScrewUsage.EnumValues screwusage)
+        {
+            eqRotDoc.eqRot.mountingType mouting = Mouting();
+
+            if (mouting.levelingAndAdjustment.Exists)
+            {
+                for (int i = 0; i < mouting.levelingAndAdjustment.Count; i++)
+                {
+                    if (mouting.levelingAndAdjustment[i].orientation.First.EnumerationValue.Equals(orientation) && mouting.levelingAndAdjustment[i].screwUsage.First.EnumerationValue.Equals(screwusage))
+                    {
+                        return mouting.levelingAndAdjustment[i];
+                    }
+                }
+            }
+
+            eqRotDoc.eqRot.levelingAndAdjustmentType levelingAndAdj = mouting.levelingAndAdjustment.Append();
+
+
+            levelingAndAdj.orientation.Append().EnumerationValue = eqRotDoc.eq.EOrientationType.EnumValues.eUnspecified;
+            levelingAndAdj.screwUsage.Append().EnumerationValue = eqRotDoc.eqRot.EScrewUsageType.EnumValues.eAlignment;
+
+            return levelingAndAdj;
+        }
+
+        /// <summary>
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:baseplate/eqRot:draining 
+        /// </summary>
+        /// <returns></returns>
+        private eqRotDoc.eqRot.drainingType Draining()
+        {
+            eqRotDoc.eqRot.Baseplate baseplate = BasePlate();
+
+            if (!baseplate.draining.Exists)
+            {
+                return baseplate.draining.Append();
+            }
+            return baseplate.draining.First;
+        }
+
+        /// <summary>
+        /// /eqRotDoc:centrifugalPumpDataSheet/eqRot:centrifugalPump/eqRot:baseplate/eqRot:draining[eqRot:baseplateDrain="Drain connection"]
+        /// </summary>
+        /// <returns></returns>
+        private eqRotDoc.eqRot.drainingType DrainingWith_BasePlateDrain(eqRotDoc.eqRot.EBaseplateDrainType.EnumValues basePlateDrain)
+        {
+            eqRotDoc.eqRot.Baseplate baseplate = BasePlate();
+
+            if (!baseplate.draining.Exists)
+            {
+                for (int i = 0; i < baseplate.draining.Count; i++)
+                {
+                    if (baseplate.draining[i].baseplateDrain.First.EnumerationValue.Equals(basePlateDrain))
+                    {
+                        return baseplate.draining[i];
+                    }
+                }
+            }
+            eqRotDoc.eqRot.drainingType draining = Draining();
+            
+            draining.baseplateDrain.Append().EnumerationValue = basePlateDrain;
+
+            return draining;
+
+        }
     }
 }

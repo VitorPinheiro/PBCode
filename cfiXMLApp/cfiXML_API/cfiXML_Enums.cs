@@ -291,5 +291,34 @@ namespace cfiXML_API
 
             return eqRotDoc.site.EConfigurationTypeType.EnumValues.ecustom;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="baseplateDrainig"></param>
+        /// <returns></returns>
+        public static eqRotDoc.eqRot.EBaseplateDrainType.EnumValues getBaseplateDrainig(String baseplateDrainig)
+        {
+
+
+            if (String.IsNullOrEmpty(baseplateDrainig))
+                return eqRotDoc.eqRot.EBaseplateDrainType.EnumValues.eNil;
+            else if (baseplateDrainig.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EBaseplateDrainType.EnumValues.ecustom.ToString()), StringComparison.InvariantCultureIgnoreCase))
+                return eqRotDoc.eqRot.EBaseplateDrainType.EnumValues.ecustom;
+            else if (baseplateDrainig.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EBaseplateDrainType.EnumValues.eDrain_connection.ToString()), StringComparison.InvariantCultureIgnoreCase))
+                return eqRotDoc.eqRot.EBaseplateDrainType.EnumValues.eDrain_connection;
+            else if (baseplateDrainig.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EBaseplateDrainType.EnumValues.eDrain_pan___full.ToString()), StringComparison.InvariantCultureIgnoreCase))
+                return eqRotDoc.eqRot.EBaseplateDrainType.EnumValues.eDrain_pan___full;
+            else if (baseplateDrainig.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EBaseplateDrainType.EnumValues.eDrain_pan___partial.ToString()), StringComparison.InvariantCultureIgnoreCase))
+                return eqRotDoc.eqRot.EBaseplateDrainType.EnumValues.eDrain_pan___partial;
+            else if (baseplateDrainig.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EBaseplateDrainType.EnumValues.eDrain_rim___full.ToString()), StringComparison.InvariantCultureIgnoreCase))
+                return eqRotDoc.eqRot.EBaseplateDrainType.EnumValues.eDrain_pan___full;
+            else if (baseplateDrainig.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EBaseplateDrainType.EnumValues.eOpen_drain.ToString()), StringComparison.InvariantCultureIgnoreCase))
+                return eqRotDoc.eqRot.EBaseplateDrainType.EnumValues.eOpen_drain;
+            else if (baseplateDrainig.Equals(Utils.processEnumValue(eqRotDoc.eqRot.EBaseplateDrainType.EnumValues.eUnspecified.ToString()), StringComparison.InvariantCultureIgnoreCase))
+                return eqRotDoc.eqRot.EBaseplateDrainType.EnumValues.eUnspecified;
+            else
+                return eqRotDoc.eqRot.EBaseplateDrainType.EnumValues.eOther;
+        }
     }
 }
